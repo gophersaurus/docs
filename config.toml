@@ -1,4 +1,4 @@
-baseurl = "http://gophersaurus.github.io/docs/"
+baseurl = "https://gophersaurus.github.io/docs/"
 languageCode = "en-us"
 title = "Gophersaurus"
 
