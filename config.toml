@@ -1,6 +1,7 @@
 baseurl = "http://gophersaurus.io/"
 languageCode = "en-us"
 title = "Gophersaurus"
+theme = "gophersaurus"
 
 DisableRSS = true
 DisableSitemap = true
