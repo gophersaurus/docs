@@ -1,3 +1,6 @@
-baseurl = "http://yourSiteHere/"
+baseurl = "http://gophersaurus.io/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Gophersaurus"
+
+DisableRSS = true
+DisableSitemap = true

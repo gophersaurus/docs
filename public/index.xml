@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gophersaurus Framework</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Gophersaurus Framework</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 29 Jun 2015 19:14:23 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Install</title>
+      <link>http://localhost:1313/docs/0.5/install/</link>
+      <pubDate>Mon, 29 Jun 2015 19:14:23 -0500</pubDate>
+      
+      <guid>http://localhost:1313/docs/0.5/install/</guid>
+      <description>
+
+&lt;h1 id=&#34;installation:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Installation&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#installation&#34;&gt;Installation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#configuration&#34;&gt;Configuration&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#basic-configuration&#34;&gt;Basic Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#environment-configuration&#34;&gt;Environment Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#configuration-caching&#34;&gt;Configuration Caching&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#accessing-configuration-values&#34;&gt;Accessing Configuration Values&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#naming-your-application&#34;&gt;Naming Your Application&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#maintenance-mode&#34;&gt;Maintenance Mode&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a name=&#34;installation&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;installation-1:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;h3 id=&#34;server-requirements:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Server Requirements&lt;/h3&gt;
+
+&lt;p&gt;The Laravel framework has a few system requirements. Of course, all of these requirements are satisfied by the &lt;a href=&#34;http://localhost:1313/docs/{{version}}/homestead&#34;&gt;Laravel Homestead&lt;/a&gt; virtual machine:&lt;/p&gt;
+
+&lt;div class=&#34;content-list&#34; markdown=&#34;1&#34;&gt;
+- PHP &gt;= 5.5.9
+- OpenSSL PHP Extension
+- PDO PHP Extension
+- Mbstring PHP Extension
+- Tokenizer PHP Extension
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a name=&#34;install-laravel&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;installing-laravel:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Installing Laravel&lt;/h3&gt;
+
+&lt;p&gt;Laravel utilizes &lt;a href=&#34;http://getcomposer.org&#34;&gt;Composer&lt;/a&gt; to manage its dependencies. So, before using Laravel, make sure you have Composer installed on your machine.&lt;/p&gt;
+
+&lt;h4 id=&#34;via-laravel-installer:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Via Laravel Installer&lt;/h4&gt;
+
+&lt;p&gt;First, download the Laravel installer using Composer:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;composer global require &amp;quot;laravel/installer=~1.1&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Make sure to place the &lt;code&gt;~/.composer/vendor/bin&lt;/code&gt; directory in your PATH so the &lt;code&gt;laravel&lt;/code&gt; executable can be located by your system.&lt;/p&gt;
+
+&lt;p&gt;Once installed, the simple &lt;code&gt;laravel new&lt;/code&gt; command will create a fresh Laravel installation in the directory you specify. For instance, &lt;code&gt;laravel new blog&lt;/code&gt; will create a directory named &lt;code&gt;blog&lt;/code&gt; containing a fresh Laravel installation with all of Laravel&amp;rsquo;s dependencies already installed. This method of installation is much faster than installing via Composer:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;laravel new blog
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;via-composer-create-project:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Via Composer Create-Project&lt;/h4&gt;
+
+&lt;p&gt;You may also install Laravel by issuing the Composer &lt;code&gt;create-project&lt;/code&gt; command in your terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;composer create-project laravel/laravel --prefer-dist
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a name=&#34;configuration&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;&lt;a name=&#34;basic-configuration&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;basic-configuration:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Basic Configuration&lt;/h3&gt;
+
+&lt;p&gt;All of the configuration files for the Laravel framework are stored in the &lt;code&gt;config&lt;/code&gt; directory. Each option is documented, so feel free to look through the files and get familiar with the options available to you.&lt;/p&gt;
+
+&lt;h4 id=&#34;directory-permissions:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Directory Permissions&lt;/h4&gt;
+
+&lt;p&gt;After installing Laravel, you may need to configure some permissions. Directories within the &lt;code&gt;storage&lt;/code&gt; and the &lt;code&gt;bootstrap/cache&lt;/code&gt; directories should be writable by your web server. If you are using the &lt;a href=&#34;http://localhost:1313/docs/{{version}}/homestead&#34;&gt;Homestead&lt;/a&gt; virtual machine, these permissions should already be set.&lt;/p&gt;
+
+&lt;h4 id=&#34;application-key:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Application Key&lt;/h4&gt;
+
+&lt;p&gt;The next thing you should do after installing Laravel is set your application key to a random string. If you installed Laravel via Composer or the Laravel installer, this key has already been set for you by the &lt;code&gt;key:generate&lt;/code&gt; command. Typically, this string should be 32 characters long. The key can be set in the &lt;code&gt;.env&lt;/code&gt; environment file. If you have not renamed the &lt;code&gt;.env.example&lt;/code&gt; file to &lt;code&gt;.env&lt;/code&gt;, you should do that now. &lt;strong&gt;If the application key is not set, your user sessions and other encrypted data will not be secure!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;additional-configuration:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Additional Configuration&lt;/h4&gt;
+
+&lt;p&gt;Laravel needs almost no other configuration out of the box. You are free to get started developing! However, you may wish to review the &lt;code&gt;config/app.php&lt;/code&gt; file and its documentation. It contains several options such as &lt;code&gt;timezone&lt;/code&gt; and &lt;code&gt;locale&lt;/code&gt; that you may wish to change according to your application.&lt;/p&gt;
+
+&lt;p&gt;You may also want to configure a few additional components of Laravel, such as:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://localhost:1313/docs/{{version}}/cache#configuration&#34;&gt;Cache&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://localhost:1313/docs/{{version}}/database#configuration&#34;&gt;Database&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://localhost:1313/docs/{{version}}/session#configuration&#34;&gt;Session&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Once Laravel is installed, you should also &lt;a href=&#34;http://localhost:1313/docs/{{version}}/installation#environment-configuration&#34;&gt;configure your local environment&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;pretty-urls&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;pretty-urls:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Pretty URLs&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Apache&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The framework ships with a &lt;code&gt;public/.htaccess&lt;/code&gt; file that is used to allow URLs without &lt;code&gt;index.php&lt;/code&gt;. If you use Apache to serve your Laravel application, be sure to enable the &lt;code&gt;mod_rewrite&lt;/code&gt; module.&lt;/p&gt;
+
+&lt;p&gt;If the &lt;code&gt;.htaccess&lt;/code&gt; file that ships with Laravel does not work with your Apache installation, try this one:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Options +FollowSymLinks
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Nginx&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;On Nginx, the following directive in your site configuration will allow &amp;ldquo;pretty&amp;rdquo; URLs:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;location / {
+    try_files $uri $uri/ /index.php?$query_string;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Of course, when using &lt;a href=&#34;http://localhost:1313/docs/{{version}}/homestead&#34;&gt;Homestead&lt;/a&gt;, pretty URLs will be configured automatically.&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;environment-configuration&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;environment-configuration:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Environment Configuration&lt;/h3&gt;
+
+&lt;p&gt;It is often helpful to have different configuration values based on the environment the application is running in. For example, you may wish to use a different cache driver locally than you do on your production server. It&amp;rsquo;s easy using environment based configuration.&lt;/p&gt;
+
+&lt;p&gt;To make this a cinch, Laravel utilizes the &lt;a href=&#34;https://github.com/vlucas/phpdotenv&#34;&gt;DotEnv&lt;/a&gt; PHP library by Vance Lucas. In a fresh Laravel installation, the root directory of your application will contain a &lt;code&gt;.env.example&lt;/code&gt; file. If you install Laravel via Composer, this file will automatically be renamed to &lt;code&gt;.env&lt;/code&gt;. Otherwise, you should rename the file manually.&lt;/p&gt;
+
+&lt;p&gt;All of the variables listed in this file will be loaded into the &lt;code&gt;$_ENV&lt;/code&gt; PHP super-global when your application receives a request. You may use the &lt;code&gt;env&lt;/code&gt; helper to retrieve values from these variables. In fact, if you review the Laravel configuration files, you will notice several of the options already using this helper!&lt;/p&gt;
+
+&lt;p&gt;Feel free to modify your environment variables as needed for your own local server, as well as your production environment. However, your &lt;code&gt;.env&lt;/code&gt; file should not be committed to your application&amp;rsquo;s source control, since each developer / server using your application could require a different environment configuration.&lt;/p&gt;
+
+&lt;p&gt;If you are developing with a team, you may wish to continue including a &lt;code&gt;.env.example&lt;/code&gt; file with your application. By putting place-holder values in the example configuration file, other developers on your team can clearly see which environment variables are needed to run your application.&lt;/p&gt;
+
+&lt;h4 id=&#34;accessing-the-current-application-environment:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Accessing The Current Application Environment&lt;/h4&gt;
+
+&lt;p&gt;The current application environment is determined via the &lt;code&gt;APP_ENV&lt;/code&gt; variable from your &lt;code&gt;.env&lt;/code&gt; file. You may access this value via the &lt;code&gt;environment&lt;/code&gt; method on the &lt;code&gt;App&lt;/code&gt; &lt;a href=&#34;http://localhost:1313/docs/{{version}}/facades&#34;&gt;facade&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$environment = App::environment();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You may also pass arguments to the &lt;code&gt;environment&lt;/code&gt; method to check if the environment matches a given value. You may even pass multiple values if necessary:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if (App::environment(&#39;local&#39;)) {
+    // The environment is local
+}
+
+if (App::environment(&#39;local&#39;, &#39;staging&#39;)) {
+    // The environment is either local OR staging...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;An application instance may also be accessed via the &lt;code&gt;app&lt;/code&gt; helper method:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$environment = app()-&amp;gt;environment();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a name=&#34;configuration-caching&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;configuration-caching:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Configuration Caching&lt;/h3&gt;
+
+&lt;p&gt;To give your application a speed boost, you should cache all of your configuration files into a single file using the &lt;code&gt;config:cache&lt;/code&gt; Artisan command. This will combine all of the configuration options for your application into a single file which can be loaded quickly by the framework.&lt;/p&gt;
+
+&lt;p&gt;You should typically run the &lt;code&gt;config:cache&lt;/code&gt; command as part of your deployment routine.&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;accessing-configuration-values&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;accessing-configuration-values:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Accessing Configuration Values&lt;/h3&gt;
+
+&lt;p&gt;You may easily access your configuration values using the global &lt;code&gt;config&lt;/code&gt; helper function. The configuration values may be accessed using &amp;ldquo;dot&amp;rdquo; syntax, which includes the name of the file and option you wish to access. A default value may also be specified and will be returned if the configuration option does not exist:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$value = config(&#39;app.timezone&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To set configuration values at runtime, pass an array to the &lt;code&gt;config&lt;/code&gt; helper:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;config([&#39;app.timezone&#39; =&amp;gt; &#39;America/Chicago&#39;]);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a name=&#34;naming-your-application&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;naming-your-application:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Naming Your Application&lt;/h3&gt;
+
+&lt;p&gt;After installing Laravel, you may wish to &amp;ldquo;name&amp;rdquo; your application. By default, the &lt;code&gt;app&lt;/code&gt; directory is namespaced under &lt;code&gt;App&lt;/code&gt;, and autoloaded by Composer using the &lt;a href=&#34;http://www.php-fig.org/psr/psr-4/&#34;&gt;PSR-4 autoloading standard&lt;/a&gt;. However, you may change the namespace to match the name of your application, which you can easily do via the &lt;code&gt;app:name&lt;/code&gt; Artisan command.&lt;/p&gt;
+
+&lt;p&gt;For example, if your application is named &amp;ldquo;Horsefly&amp;rdquo;, you could run the following command from the root of your installation:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;php artisan app:name Horsefly
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Renaming your application is entirely optional, and you are free to keep the &lt;code&gt;App&lt;/code&gt; namespace if you wish.&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;maintenance-mode&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;maintenance-mode:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Maintenance Mode&lt;/h2&gt;
+
+&lt;p&gt;When your application is in maintenance mode, a custom view will be displayed for all requests into your application. This makes it easy to &amp;ldquo;disable&amp;rdquo; your application while it is updating or when you are performing maintenance. A maintenance mode check is included in the default middleware stack for your application. If the application is in maintenance mode, an &lt;code&gt;HttpException&lt;/code&gt; will be thrown with a status code of 503.&lt;/p&gt;
+
+&lt;p&gt;To enable maintenance mode, simply execute the &lt;code&gt;down&lt;/code&gt; Artisan command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;php artisan down
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To disable maintenance mode, use the &lt;code&gt;up&lt;/code&gt; command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;php artisan up
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;maintenance-mode-response-template:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Maintenance Mode Response Template&lt;/h3&gt;
+
+&lt;p&gt;The default template for maintenance mode responses is located in &lt;code&gt;resources/views/errors/503.blade.php&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;maintenance-mode-queues:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Maintenance Mode &amp;amp; Queues&lt;/h3&gt;
+
+&lt;p&gt;While your application is in maintenance mode, no &lt;a href=&#34;http://localhost:1313/docs/{{version}}/queues&#34;&gt;queued jobs&lt;/a&gt; will be handled. The jobs will continue to be handled as normal once the application is out of maintenance mode.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
