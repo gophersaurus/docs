@@ -1,7 +1,7 @@
 +++
 date = "2015-06-29T19:14:23-05:00"
 draft = true
-title = "Install"
+title = "Installation"
 
 +++
 
