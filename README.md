@@ -1,6 +1,6 @@
-Gophersaurus Documentation
+# Gophersaurus Documentation
 
-# [![Build Status](https://drone.io/github.com/gophersaurus/docs/status.png)](https://drone.io/github.com/gophersaurus/docs/latest) Documentation for the [Gophersaurus](https://github.com/gophersaurus/framework) framework, found at [gophersaurus.github.io/docs](https://gophersaurus.github.io/docs)
+[![Build Status](https://drone.io/github.com/gophersaurus/docs/status.png)](https://drone.io/github.com/gophersaurus/docs/latest) Documentation for the [Gophersaurus](https://github.com/gophersaurus/framework) framework, found at [gophersaurus.github.io/docs](https://gophersaurus.github.io/docs)
 
 ## Setup
 
