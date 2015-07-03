@@ -1,7 +1,4 @@
-# docs
-Gophersaurus Framework Documentation
-
-[![Build Status](https://drone.io/github.com/gophersaurus/docs/status.png)](https://drone.io/github.com/gophersaurus/docs/latest)
+# [![Build Status](https://drone.io/github.com/gophersaurus/docs/status.png)](https://drone.io/github.com/gophersaurus/docs/latest) Gophersaurus Framework Documentation
 
 Documentation for the [Gophersaurus](https://github.com/gophersaurus/framework) framework, found at [readme.drone.io](https://gophersaurus.github.io/docs)
 
