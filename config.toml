@@ -1,6 +1,6 @@
 baseurl = "https://gophersaurus.github.io/docs/"
 languageCode = "en-us"
-title = "Gophersaurus"
+title = "Gophersaurus Framework"
 theme = "gophersaurus"
 
 DisableRSS = true
