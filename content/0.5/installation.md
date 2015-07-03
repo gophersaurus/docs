@@ -1,7 +1,7 @@
 +++
 date = "2015-06-29T19:14:23-05:00"
 draft = true
-title = "Install"
+title = "Installation"
 
 +++
 
@@ -27,7 +27,7 @@ The Gophersaurus framework has a few system requirements:
 <a name="install-gophersaurus"></a>
 ### Installing Gophersaurus
 
-Gophersaurus utilizes the [gf tool](https://github.com/gophersaurus/gf) to start a project.
+Gophersaurus utilizes the [gf](https://github.com/gophersaurus/gf) tool to start a project.
 
 #### Via gf tool
 
