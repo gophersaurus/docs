@@ -4,7 +4,7 @@
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,200italic,400italic,700italic);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,200italic,400italic,700italic);
 html {
   font-family: sans-serif;
   /* 1 */
@@ -360,7 +360,7 @@ body {
   color: #525252;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 16px;
-  background: #fff url("/docs/img/cloud-bar.png") repeat-x;
+  background: #fff url("../img/cloud-bar.png") repeat-x;
   padding-top: 10px;
   -webkit-font-smoothing: antialiased; }
 
@@ -1548,7 +1548,7 @@ nav.main {
           color: #80878c; }
   .panel.ecosystem {
     padding: 150px 0 75px;
-    background: url("/assets/img/laravel-tucked.png") center top no-repeat; }
+    background: url("../img/laravel-tucked.png") center top no-repeat; }
     .panel.ecosystem > h1,
     .panel.ecosystem > p {
       margin: 0 0 20px 0;
@@ -1838,7 +1838,7 @@ nav.main {
   margin: 0 auto; }
   .docs #search-wrapper .icon {
     content: '';
-    background: url("/assets/img/search_icon.png") center center no-repeat;
+    background: url("img/search_icon.png") center center no-repeat;
     position: absolute;
     right: 12px;
     top: 9px;
@@ -1848,7 +1848,7 @@ nav.main {
     z-index: 200; }
 
 #search-wrapper.not-empty .icon {
-  background: url("/assets/img/cross_icon.png") center center no-repeat;
+  background: url("img/cross_icon.png") center center no-repeat;
   cursor: pointer; }
 
 #search-input {
