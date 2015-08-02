@@ -36,19 +36,19 @@
 				<div class='window-content'>
 					<pre class="line-numbers"><code class="language-php">
 
-		package controllers
+    package controllers
 
 		import "github.com/gophersaurus/gf.v1"
 
 		// HomeController contains controller logic for home.
-		type HomeController struct{}
+		type HomeController struct{
 
-		// Index is a HomeController action method for a GET request.
-		func (h HomeController) Index(resp gf.Responder, req *gf.Request) {
-
-			// write the response in the format requested (json, jsonp, xml, or yaml)
+      // Index is a HomeController action method for a GET request.
+      Index func(resp http.Responder, req *http.Request)
+    }{
+      // write the response in the format requested (json, jsonp, xml, or yaml)
 			resp.Write(req, "Welcome fellow gopher.")
-		}
+    }
 
 		</code></pre>
 					</div>
