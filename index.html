@@ -36,19 +36,19 @@
 				<div class='window-content'>
 					<pre class="line-numbers"><code class="language-php">
 
-    package controllers
+  package controllers
 
-		import "github.com/gophersaurus/gf.v1"
+  import "github.com/gophersaurus/gf.v1"
 
-		// HomeController contains controller logic for home.
-		type HomeController struct{
-
-      // Index is a HomeController action method for a GET request.
-      Index func(resp http.Responder, req *http.Request)
-    }{
-      // write the response in the format requested (json, jsonp, xml, or yaml)
-			resp.Write(req, "Welcome fellow gopher.")
+  // Home is a business logic controller.
+  type Home struct{
+    // Index is an action method for a GET request.
+    Index func(resp http.Responder, req *http.Request)
+  }{
+    Index: func(resp http.Responder, req *http.Request) {
+      resp.Write(req, "Welcome fellow gopher.") // JSON, JSONP, XML, or YAML
     }
+  }
 
 		</code></pre>
 					</div>
@@ -110,11 +110,10 @@ func register(r *gf.Router) {
 								<div class="dark-code">
 								<pre><code class="language-bash">
 
-→ gf new SuperCoolProject
-
 → gf -h
  A CLI tool for starting new Gophersaurus projects.
 
+ → gf new SuperCoolProject
 
 	</code></pre></div>
 							</div>
