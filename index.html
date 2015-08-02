@@ -1,0 +1,256 @@
+<!doctype html>
+  <html>
+  <head>
+  	<meta charset="utf-8">
+  	<title>Gophersaurus - The Golang Framework For APIs</title>
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  	<meta name="author" content="Jack Spirou">
+  	<meta name="description" content="Gophersaurus - The Golang Framework For APIs.">
+  	<meta name="keywords" content="gophersaurus, golang, framework, api, jack spirou">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	
+  	<link rel="stylesheet" href="/docs/css/frontpage.css">
+  	<link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+
+  <body class="docs language-php">
+
+
+<span class="overlay"></span>
+
+
+<div class="container">
+
+		<section class="panel statement light">
+		<div class="content">
+			<h1>Love beautiful code? We do too.</h1>
+			<p>The Golang framework for API services</p>
+			<div class='browser-window'>
+				<div class='top-bar'>
+					<div class='circles'>
+						<div class="circle circle-red"></div>
+						<div class="circle circle-yellow"></div>
+						<div class="circle circle-green"></div>
+					</div>
+				</div>
+				<div class='window-content'>
+					<pre class="line-numbers"><code class="language-php">
+
+		package controllers
+
+		import "github.com/gophersaurus/gf.v1"
+
+		// HomeController contains controller logic for home.
+		type HomeController struct{}
+
+		// Index is a HomeController action method for a GET request.
+		func (h HomeController) Index(resp gf.Responder, req *gf.Request) {
+
+			// write the response in the format requested (json, jsonp, xml, or yaml)
+			resp.Write(req, "Welcome fellow gopher.")
+		}
+
+		</code></pre>
+					</div>
+				</div>
+</div>
+		<a href="#design" class="next-up">
+			Thoughtful API Design
+			<img src="img/down-arrow.png">
+		</a>
+		</div>
+
+	</section>
+
+	<section class="panel features dark" id="design">
+		<h1>Did someone say rapid?</h1>
+		<p>Gophersaurus is a simple saurus, thinking only of building beautiful APIs. <br/>
+			Deliver elegantly designed HTTP services at warp speed.</p>
+			<div class="blocks stacked">
+				<div class="block odd">
+					<div class="text">
+						<h2>Expressive, beautiful syntax.</h2>
+						<p>Value elegance, simplicity, and readability? You’ll fit right in. Laravel is designed for people just like you. If you need help getting started, check out <a href="https://laracasts.com">Laracasts</a> and our <a href="/docs">great documentation</a>.</p>
+					</div>
+					<div class="media">
+
+						<div class='browser-window'>
+							<div class='top-bar'>
+								<div class='circles'>
+									<div class="circle circle-red"></div>
+									<div class="circle circle-yellow"></div>
+									<div class="circle circle-green"></div>
+								</div>
+							</div>
+							<div class='window-content'>
+								<pre class="line-numbers"><code class="language-php">
+import (
+	c "path/to/controllers"
+	"github.com/gophersaurus/gf.v1"
+) ...
+func register(r *gf.Router) {
+	r.GET("/", c.Home.Index)
+	r.GET("/weather/:city", c.Weather.Show)
+}
+	</code></pre>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="block even">
+					<div class="text">
+						<h2>Tailored for your team.</h2>
+						<p>Whether you're a solo developer or a 20 person team, Gophersaurus keeps everyone in sync using traditional MVC architecture.</p>
+					</div>
+					<div class="media">
+						<div class="terminal-window">
+							<div class='top-bar'></div>
+							<div class='window-content'>
+								<div class="dark-code">
+								<pre><code class="language-bash">
+
+→ gf new SuperCoolProject
+
+→ gf -h
+ A CLI tool for starting new Gophersaurus projects.
+
+
+	</code></pre></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="block odd">
+					<div class="text">
+						<h2>Modern toolkit. Pinch of magic.</h2>
+						<p>A new look at ORMs, painless routing, powerful concurrency, and simple authentication for building modern scalable API services.
+					</div>
+					<div class="media">
+
+						<div class='browser-window'>
+							<div class='top-bar'>
+								<div class='circles'>
+									<div class="circle circle-red"></div>
+									<div class="circle circle-yellow"></div>
+									<div class="circle circle-green"></div>
+								</div>
+							</div>
+							<div class='window-content'>
+								<pre class="line-numbers"><code class="language-php">
+	// generate resource methods for users
+	Users := gf.NewResourceController(
+		models.NewUser()
+	)
+
+	// extend users
+	Users.Extend(models.NewAddress())
+
+	</code></pre>
+						</div>
+					</div>
+				</div>
+			</div>
+		<a href="#features" class="next-up">
+				Powerful, Modern Features
+				<img src="img/down-arrow.png">
+			</a>
+
+		</section>
+
+		<section class="panel ecosystem light" id="features">
+		<h1>Powerful, Modern Features</h1>
+		<p>Revolutionize how you build web services.</p>
+
+		<div class="tiles">
+			<div class="tile">
+				<h2><a href="/docs/router">Blazing Fast Router</a></h2>
+				<p>Gophersaurus takes advantage of <a href="https://github.com/julienschmidt/httprouter">httprouter</a> which boasts <strong>zero garbage collection</strong> and incredible <a href="https://github.com/julienschmidt/go-http-routing-benchmark">benchmarks</a>. Just wait until you see <a href="#">Subrouting</a>!</p>
+			</div>
+			<div class="tile">
+				<h2><a href="/docs/router">Auto Documentation</a></h2>
+				<p>API documentation for HTTP web services is often missing. Gophersaurus auto-generate endpoints as you update your routes. No more missing docs.</p>
+			</div>
+			<div class="tile">
+				<h2>API Versioning</h2>
+				<p>Gophersaurus thinks you should version your API.  Set up yourself and your clients for success.  Don't fear breaking changes, embrace them!</p>
+			</div>
+		</div>
+	</section>
+
+</div>
+
+
+<footer class="main">
+
+		<p>Gophersaurus is a trademark of Jack Spirou. Copyright &copy; Jack Spirou.</p>
+		<p class="less-significant"><a href="http://jackmcdade.com">Original Design based on Jack McDade's work</a> - <a href="http://laravel.com">laravel.com</a></p>
+	</footer>
+
+	<script>
+  var algolia_app_id      = 'SC7K1CQIP8';
+	var algolia_search_key  = 'f27109a910f6de8b0d5e270ebf4b1f00';
+	var version             = '0.5';
+</script>
+
+<script id="search_suggestion_template" type="text/template">
+	<div class="autocomplete-wrapper">
+		" {{ #_highlightResult.h1 }} "
+		<div class="h1">
+			"{{{ _highlightResult.h1.value }}}"
+		</div>
+		\{\{\/_highlightResult\.h1\}\}
+
+		<div class="sub-section">
+			\{\{#_highlightResult\.h2\}\}
+			<div class="h2">
+				<span class="hash">#</span> "{{{ _highlightResult.h2.value }}}"
+			</div>
+			\{\{\/_highlightResult\.h2\}\}
+
+			\{\{#_highlightResult\.h3\}\}
+			<div class="h3">
+				> \{\{\{ _highlightResult\.h3\.value \}\}\}
+			</div>
+			"{{/_highlightResult.h3}}"
+
+			"{{#_highlightResult.h4}}"
+			<div class="h4">
+				"\u003e {{{ _highlightResult.h4.value }}}"
+			</div>
+			\{\{\/_highlightResult\.h4\}\}
+		</div>
+
+		"{{#_highlightResult.content}}"
+		<div class="content">
+			"{{{ _highlightResult.content.value }}}"
+		</div>
+		\{\{\/_highlightResult\.content\}\}
+	</div>
+</script>
+
+<script id="search_empty_template" type="text/template">
+	<div class="autocomplete-wrapper empty">
+		<div class="h2">We didn't find any result for \x22{{query}}\x22. Sorry!</div>
+	</div>
+</script>
+
+<script id="search_footer_template" type="text/template">
+	<div class="footer">
+		<a target="_blank" href="http://www.algolia.com">
+			<img width="50" src="docs/img/algolia-logo.png"/>
+			<div class="powered">powered by</div>
+			<div style="clear: both"></div>
+		</a>
+	</div>
+</script>
+
+
+	<script src="/docs/js/frontpage.js"></script>
+	<script src="/docs/js/viewport-units-buggyfill.js"></script>
+	<script>window.viewportUnitsBuggyfill.init();</script>
+	<script>
+		
+	</script>
+</body>
+</html>

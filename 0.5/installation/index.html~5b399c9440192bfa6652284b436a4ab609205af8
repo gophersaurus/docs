@@ -2,7 +2,7 @@
   <html>
   <head>
   	<meta charset="utf-8">
-  	<title>Install - Gophersaurus - The Golang Framework For APIs</title>
+  	<title>Installation - Gophersaurus - The Golang Framework For APIs</title>
   	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   	<meta name="author" content="Jack Spirou">
   	<meta name="description" content="Gophersaurus - The Golang Framework For APIs.">
@@ -18,7 +18,7 @@
 
 <div class="docs-wrapper container">
 	<article>
-    <h1>Install</h1>
+    <h1>Installation</h1>
     
 
 <ul>
@@ -36,9 +36,9 @@
 
 <p><a name="installation"></a></p>
 
-<h2 id="installation:ee40007639ba1d9861b5cc3e7ade0aef">Installation</h2>
+<h2 id="installation:4c40a97dcf30b230e73eabba1323c21c">Installation</h2>
 
-<h3 id="server-requirements:ee40007639ba1d9861b5cc3e7ade0aef">Server Requirements</h3>
+<h3 id="server-requirements:4c40a97dcf30b230e73eabba1323c21c">Server Requirements</h3>
 
 <p>The Gophersaurus framework has a few system requirements:</p>
 
@@ -48,11 +48,11 @@
 
 <p><a name="install-gophersaurus"></a></p>
 
-<h3 id="installing-gophersaurus:ee40007639ba1d9861b5cc3e7ade0aef">Installing Gophersaurus</h3>
+<h3 id="installing-gophersaurus:4c40a97dcf30b230e73eabba1323c21c">Installing Gophersaurus</h3>
 
-<p>Gophersaurus utilizes the <a href="https://github.com/gophersaurus/gf">gf tool</a> to start a project.</p>
+<p>Gophersaurus utilizes the <a href="https://github.com/gophersaurus/gf">gf</a> tool to start a project.</p>
 
-<h4 id="via-gf-tool:ee40007639ba1d9861b5cc3e7ade0aef">Via gf tool</h4>
+<h4 id="via-gf-tool:4c40a97dcf30b230e73eabba1323c21c">Via gf tool</h4>
 
 <p>First, download the <code>gf</code> installer tool on your machine using Go:</p>
 
@@ -68,23 +68,23 @@
 
 <p><a name="configuration"></a></p>
 
-<h2 id="configuration:ee40007639ba1d9861b5cc3e7ade0aef">Configuration</h2>
+<h2 id="configuration:4c40a97dcf30b230e73eabba1323c21c">Configuration</h2>
 
 <p><a name="basic-configuration"></a></p>
 
-<h3 id="basic-configuration:ee40007639ba1d9861b5cc3e7ade0aef">Basic Configuration</h3>
+<h3 id="basic-configuration:4c40a97dcf30b230e73eabba1323c21c">Basic Configuration</h3>
 
 <p>All of the configuration files for the Gophersaurus framework are stored in the <code>config</code> directory. Each option is documented, so feel free to look through the files and get familiar with the options available to you.</p>
 
-<h4 id="directory-permissions:ee40007639ba1d9861b5cc3e7ade0aef">Directory Permissions</h4>
+<h4 id="directory-permissions:4c40a97dcf30b230e73eabba1323c21c">Directory Permissions</h4>
 
 <p>After installing Gophersaurus, you may need to configure some permissions. Directories within the <code>storage</code> and the <code>bootstrap/cache</code> directories should be writable by your web server. If you are using the <a href="/docs/{{version}}/homestead">Homestead</a> virtual machine, these permissions should already be set.</p>
 
-<h4 id="application-key:ee40007639ba1d9861b5cc3e7ade0aef">Application Key</h4>
+<h4 id="application-key:4c40a97dcf30b230e73eabba1323c21c">Application Key</h4>
 
 <p>The next thing you should do after installing Gophersaurus is set your application key to a random string. If you installed Gophersaurus via Composer or the Gophersaurus installer, this key has already been set for you by the <code>key:generate</code> command. Typically, this string should be 32 characters long. The key can be set in the <code>.env</code> environment file. If you have not renamed the <code>.env.example</code> file to <code>.env</code>, you should do that now. <strong>If the application key is not set, your user sessions and other encrypted data will not be secure!</strong></p>
 
-<h4 id="additional-configuration:ee40007639ba1d9861b5cc3e7ade0aef">Additional Configuration</h4>
+<h4 id="additional-configuration:4c40a97dcf30b230e73eabba1323c21c">Additional Configuration</h4>
 
 <p>Gophersaurus needs almost no other configuration out of the box. You are free to get started developing! However, you may wish to review the <code>config/app.php</code> file and its documentation. It contains several options such as <code>timezone</code> and <code>locale</code> that you may wish to change according to your application.</p>
 
@@ -100,7 +100,7 @@
 
 <p><a name="pretty-urls"></a></p>
 
-<h4 id="pretty-urls:ee40007639ba1d9861b5cc3e7ade0aef">Pretty URLs</h4>
+<h4 id="pretty-urls:4c40a97dcf30b230e73eabba1323c21c">Pretty URLs</h4>
 
 <p><strong>Apache</strong></p>
 
@@ -129,7 +129,7 @@ RewriteRule ^ index.php [L]
 
 <p><a name="environment-configuration"></a></p>
 
-<h3 id="environment-configuration:ee40007639ba1d9861b5cc3e7ade0aef">Environment Configuration</h3>
+<h3 id="environment-configuration:4c40a97dcf30b230e73eabba1323c21c">Environment Configuration</h3>
 
 <p>It is often helpful to have different configuration values based on the environment the application is running in. For example, you may wish to use a different cache driver locally than you do on your production server. It&rsquo;s easy using environment based configuration.</p>
 
@@ -141,7 +141,7 @@ RewriteRule ^ index.php [L]
 
 <p>If you are developing with a team, you may wish to continue including a <code>.env.example</code> file with your application. By putting place-holder values in the example configuration file, other developers on your team can clearly see which environment variables are needed to run your application.</p>
 
-<h4 id="accessing-the-current-application-environment:ee40007639ba1d9861b5cc3e7ade0aef">Accessing The Current Application Environment</h4>
+<h4 id="accessing-the-current-application-environment:4c40a97dcf30b230e73eabba1323c21c">Accessing The Current Application Environment</h4>
 
 <p>The current application environment is determined via the <code>APP_ENV</code> variable from your <code>.env</code> file. You may access this value via the <code>environment</code> method on the <code>App</code> <a href="/docs/{{version}}/facades">facade</a>:</p>
 
@@ -166,7 +166,7 @@ if (App::environment('local', 'staging')) {
 
 <p><a name="configuration-caching"></a></p>
 
-<h3 id="configuration-caching:ee40007639ba1d9861b5cc3e7ade0aef">Configuration Caching</h3>
+<h3 id="configuration-caching:4c40a97dcf30b230e73eabba1323c21c">Configuration Caching</h3>
 
 <p>To give your application a speed boost, you should cache all of your configuration files into a single file using the <code>config:cache</code> Artisan command. This will combine all of the configuration options for your application into a single file which can be loaded quickly by the framework.</p>
 
@@ -174,7 +174,7 @@ if (App::environment('local', 'staging')) {
 
 <p><a name="accessing-configuration-values"></a></p>
 
-<h3 id="accessing-configuration-values:ee40007639ba1d9861b5cc3e7ade0aef">Accessing Configuration Values</h3>
+<h3 id="accessing-configuration-values:4c40a97dcf30b230e73eabba1323c21c">Accessing Configuration Values</h3>
 
 <p>You may easily access your configuration values using the global <code>config</code> helper function. The configuration values may be accessed using &ldquo;dot&rdquo; syntax, which includes the name of the file and option you wish to access. A default value may also be specified and will be returned if the configuration option does not exist:</p>
 
@@ -188,7 +188,7 @@ if (App::environment('local', 'staging')) {
 
 <p><a name="naming-your-application"></a></p>
 
-<h3 id="naming-your-application:ee40007639ba1d9861b5cc3e7ade0aef">Naming Your Application</h3>
+<h3 id="naming-your-application:4c40a97dcf30b230e73eabba1323c21c">Naming Your Application</h3>
 
 <p>After installing Gophersaurus, you may wish to &ldquo;name&rdquo; your application. By default, the <code>app</code> directory is namespaced under <code>App</code>, and autoloaded by Composer using the <a href="http://www.php-fig.org/psr/psr-4/">PSR-4 autoloading standard</a>. However, you may change the namespace to match the name of your application, which you can easily do via the <code>app:name</code> Artisan command.</p>
 
@@ -205,7 +205,7 @@ if (App::environment('local', 'staging')) {
 <footer class="main">
 
 		<p>Gophersaurus is a trademark of Jack Spirou. Copyright &copy; Jack Spirou.</p>
-		<p class="less-significant"><a href="http://jackmcdade.com">Design by Jack McDade</a></p>
+		<p class="less-significant"><a href="http://jackmcdade.com">Original Design based on Jack McDade's work</a> - <a href="http://laravel.com">laravel.com</a></p>
 	</footer>
 
 	<script>
@@ -273,7 +273,7 @@ if (App::environment('local', 'staging')) {
 	<script>
 		
 	</script>
-<script data-no-instant>document.write('<script src="http://'
+<script>document.write('<script src="http://'
         + (location.host || 'localhost').split(':')[0]
 		+ ':1313/livereload.js?mindelay=10"></'
         + 'script>')</script></body>
