@@ -369,7 +369,7 @@ body {
   margin: 0 auto; }
 
 a {
-  color: #006699;
+  color: #0099ff;
   text-decoration: none; }
 
 h1 {
@@ -386,7 +386,7 @@ p {
 
 p code {
   background: #f0f2f1;
-  color: #006699;
+  color: #0099ff;
   padding: 1px 5px;
   border-radius: 3px; }
 
@@ -395,7 +395,7 @@ code, kbd, pre, samp {
   font-size: 14px; }
 
 blockquote {
-  background: #006699;
+  background: #0099ff;
   color: #fff;
   border-radius: 3px;
   margin: 10px 0 20px;
@@ -1057,7 +1057,7 @@ pre[class*="language-"] {
 /* Inline code */
 :not(pre) > code[class*="language-"] {
   background: #f0f2f1;
-  color: #006699;
+  color: #0099ff;
   padding: 1px 5px;
   border-radius: 3px; }
 
@@ -1242,7 +1242,7 @@ pre.line-numbers > code {
     cursor: help; }
 
 .slide-menu {
-  background: #006699;
+  background: #0099ff;
   padding: 0 20px;
   left: -70%;
   display: none; }
@@ -1325,7 +1325,7 @@ pre.line-numbers > code {
 .btn {
   border: none;
   border-radius: 3px;
-  background: #006699;
+  background: #0099ff;
   color: #fff;
   padding: 10px 15px;
   font-size: 16px; }
@@ -1350,7 +1350,7 @@ footer.main {
         font-size: 16px;
         color: #525252; }
         footer.main > ul > li > a:hover {
-          color: #006699; }
+          color: #0099ff; }
   footer.main p {
     color: #aeaeae;
     font-size: 16px;
@@ -1358,12 +1358,12 @@ footer.main {
     footer.main p a {
       color: #525252; }
       footer.main p a:hover {
-        color: #006699; }
+        color: #0099ff; }
   footer.main p.less-significant a {
     color: #c8c8c8;
     font-size: 14px; }
     footer.main p.less-significant a:hover {
-      color: #006699; }
+      color: #0099ff; }
   footer.main .dropdown-menu {
     bottom: 115%;
     top: auto; }
@@ -1407,9 +1407,9 @@ nav.main {
         color: #525252;
         padding: 35px 0; }
         nav.main ul.main-nav > li > a:hover {
-          color: #006699; }
+          color: #0099ff; }
       nav.main ul.main-nav > li.active a {
-        color: #006699; }
+        color: #0099ff; }
     nav.main ul.main-nav .community-dropdown .dropdown-menu {
       top: 83%; }
   nav.main .switcher {
@@ -1524,7 +1524,7 @@ nav.main {
           .panel.features .blocks .block .text h2 {
             font-size: 24px;
             font-weight: 400;
-            color: #006699; }
+            color: #0099ff; }
         .panel.features .blocks .block .media {
           float: right;
           padding-top: 20px;
@@ -1590,7 +1590,7 @@ nav.main {
         .panel.ecosystem .tiles .tile:last-child {
           margin-right: 0; }
         .panel.ecosystem .tiles .tile h2 {
-          color: #006699;
+          color: #0099ff;
           font-size: 24px;
           font-weight: 400; }
         .panel.ecosystem .tiles .tile p {
@@ -1779,7 +1779,7 @@ nav.main {
     .docs article h1 + ul li:before {
       content: "# ";
       margin-right: .25em;
-      color: #006699;
+      color: #0099ff;
       opacity: .3; }
     .docs article h1 + ul li a {
       text-decoration: none; }
@@ -1801,7 +1801,7 @@ nav.main {
       position: absolute;
       font-size: 28px;
       top: 5px;
-      color: #006699;
+      color: #0099ff;
       opacity: .6; }
   .docs article h3 {
     font-size: 24px;
@@ -2014,7 +2014,7 @@ nav.main {
 .docs #search-input:focus {
   box-shadow: none;
   outline: 0;
-  border-color: #006699; }
+  border-color: #0099ff; }
 
 .docs-wrapper {
   overflow: hidden; }
