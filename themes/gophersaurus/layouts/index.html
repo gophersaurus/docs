@@ -27,7 +27,7 @@
 
 		<section class="panel statement light">
 		<div class="content">
-			<h1>Love beautiful code? We do too.</h1>
+			<h1>Elegant services. Beautiful code.</h1>
 			<p>The Golang framework for API services</p>
 			<div class='browser-window'>
 				<div class='top-bar'>
@@ -50,7 +50,8 @@
     Index func(resp http.Responder, req *http.Request)
   }{
     Index: func(resp http.Responder, req *http.Request) {
-      resp.Write(req, "Welcome fellow gopher.") // JSON, JSONP, XML, or YAML
+      // auto respond in the requested JSON, JSONP, XML, or YAML
+      resp.Write(req, "Welcome fellow gopher.")
     }
   }
 
@@ -68,13 +69,14 @@
 
 	<section class="panel features dark" id="design">
 		<h1>Did someone say rapid?</h1>
-		<p>Gophersaurus is a simple saurus, thinking only of building beautiful APIs. <br/>
+		<p>Gophersaurus is simple, thinking only of building beautiful APIs.<br/>
 			Deliver elegantly designed HTTP services at warp speed.</p>
 			<div class="blocks stacked">
 				<div class="block odd">
 					<div class="text">
 						<h2>Expressive, beautiful syntax.</h2>
-						<p>Value elegance, simplicity, and readability? You’ll fit right in. Laravel is designed for people just like you. If you need help getting started, check out <a href="https://laracasts.com">Laracasts</a> and our <a href="/docs">great documentation</a>.</p>
+						<p>Value elegance, simplicity, and readability?</p>
+            <p>Gophersaurus is designed for people like you. If you need help getting started, check out our <a href="/docs">great documentation</a>.</p>
 					</div>
 					<div class="media">
 
@@ -105,7 +107,7 @@ func register(r *gf.Router) {
 				<div class="block even">
 					<div class="text">
 						<h2>Tailored for your team.</h2>
-						<p>Whether you're a solo developer or a 20 person team, Gophersaurus keeps everyone in sync using traditional MVC architecture.</p>
+						<p>Whether you're a solo developer or a 20 person team, Golang and Gophersaurus is designed for both simplicity and teams.</p>
 					</div>
 					<div class="media">
 						<div class="terminal-window">
@@ -114,10 +116,9 @@ func register(r *gf.Router) {
 								<div class="dark-code">
 								<pre><code class="language-bash">
 
-→ gf -h
- A CLI tool for starting new Gophersaurus projects.
+  A CLI tool for starting new Gophersaurus projects.
 
- → gf new SuperCoolProject
+  → gf new SuperCoolProject
 
 	</code></pre></div>
 							</div>
