@@ -4,7 +4,7 @@
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,200italic,400italic,700italic);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,200italic,400italic,700italic);
 html {
   font-family: sans-serif;
   /* 1 */
@@ -360,7 +360,7 @@ body {
   color: #525252;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 16px;
-  background: #fff url("/docs/img/cloud-bar.png") repeat-x;
+  background: #fff url("../img/cloud-bar.png") repeat-x;
   padding-top: 10px;
   -webkit-font-smoothing: antialiased; }
 
@@ -369,7 +369,7 @@ body {
   margin: 0 auto; }
 
 a {
-  color: #0099ff;
+  color: #f4645f;
   text-decoration: none; }
 
 h1 {
@@ -386,7 +386,7 @@ p {
 
 p code {
   background: #f0f2f1;
-  color: #0099ff;
+  color: #f4645f;
   padding: 1px 5px;
   border-radius: 3px; }
 
@@ -395,7 +395,7 @@ code, kbd, pre, samp {
   font-size: 14px; }
 
 blockquote {
-  background: #0099ff;
+  background: #f4645f;
   color: #fff;
   border-radius: 3px;
   margin: 10px 0 20px;
@@ -1057,7 +1057,7 @@ pre[class*="language-"] {
 /* Inline code */
 :not(pre) > code[class*="language-"] {
   background: #f0f2f1;
-  color: #0099ff;
+  color: #f4645f;
   padding: 1px 5px;
   border-radius: 3px; }
 
@@ -1242,7 +1242,7 @@ pre.line-numbers > code {
     cursor: help; }
 
 .slide-menu {
-  background: #0099ff;
+  background: #f4645f;
   padding: 0 20px;
   left: -70%;
   display: none; }
@@ -1325,7 +1325,7 @@ pre.line-numbers > code {
 .btn {
   border: none;
   border-radius: 3px;
-  background: #0099ff;
+  background: #f4645f;
   color: #fff;
   padding: 10px 15px;
   font-size: 16px; }
@@ -1350,7 +1350,7 @@ footer.main {
         font-size: 16px;
         color: #525252; }
         footer.main > ul > li > a:hover {
-          color: #0099ff; }
+          color: #f4645f; }
   footer.main p {
     color: #aeaeae;
     font-size: 16px;
@@ -1358,12 +1358,12 @@ footer.main {
     footer.main p a {
       color: #525252; }
       footer.main p a:hover {
-        color: #0099ff; }
+        color: #f4645f; }
   footer.main p.less-significant a {
     color: #c8c8c8;
     font-size: 14px; }
     footer.main p.less-significant a:hover {
-      color: #0099ff; }
+      color: #f4645f; }
   footer.main .dropdown-menu {
     bottom: 115%;
     top: auto; }
@@ -1407,9 +1407,9 @@ nav.main {
         color: #525252;
         padding: 35px 0; }
         nav.main ul.main-nav > li > a:hover {
-          color: #0099ff; }
+          color: #f4645f; }
       nav.main ul.main-nav > li.active a {
-        color: #0099ff; }
+        color: #f4645f; }
     nav.main ul.main-nav .community-dropdown .dropdown-menu {
       top: 83%; }
   nav.main .switcher {
@@ -1524,7 +1524,7 @@ nav.main {
           .panel.features .blocks .block .text h2 {
             font-size: 24px;
             font-weight: 400;
-            color: #0099ff; }
+            color: #f4645f; }
         .panel.features .blocks .block .media {
           float: right;
           padding-top: 20px;
@@ -1548,7 +1548,7 @@ nav.main {
           color: #80878c; }
   .panel.ecosystem {
     padding: 150px 0 75px;
-    background: url("/assets/img/laravel-tucked.png") center top no-repeat; }
+    background: url("../img/laravel-tucked.png") center top no-repeat; }
     .panel.ecosystem > h1,
     .panel.ecosystem > p {
       margin: 0 0 20px 0;
@@ -1590,7 +1590,7 @@ nav.main {
         .panel.ecosystem .tiles .tile:last-child {
           margin-right: 0; }
         .panel.ecosystem .tiles .tile h2 {
-          color: #0099ff;
+          color: #f4645f;
           font-size: 24px;
           font-weight: 400; }
         .panel.ecosystem .tiles .tile p {
@@ -1779,7 +1779,7 @@ nav.main {
     .docs article h1 + ul li:before {
       content: "# ";
       margin-right: .25em;
-      color: #0099ff;
+      color: #f4645f;
       opacity: .3; }
     .docs article h1 + ul li a {
       text-decoration: none; }
@@ -1801,7 +1801,7 @@ nav.main {
       position: absolute;
       font-size: 28px;
       top: 5px;
-      color: #0099ff;
+      color: #f4645f;
       opacity: .6; }
   .docs article h3 {
     font-size: 24px;
@@ -1838,7 +1838,7 @@ nav.main {
   margin: 0 auto; }
   .docs #search-wrapper .icon {
     content: '';
-    background: url("/assets/img/search_icon.png") center center no-repeat;
+    background: url("img/search_icon.png") center center no-repeat;
     position: absolute;
     right: 12px;
     top: 9px;
@@ -1848,7 +1848,7 @@ nav.main {
     z-index: 200; }
 
 #search-wrapper.not-empty .icon {
-  background: url("/assets/img/cross_icon.png") center center no-repeat;
+  background: url("img/cross_icon.png") center center no-repeat;
   cursor: pointer; }
 
 #search-input {
@@ -2014,7 +2014,7 @@ nav.main {
 .docs #search-input:focus {
   box-shadow: none;
   outline: 0;
-  border-color: #0099ff; }
+  border-color: #F4645F; }
 
 .docs-wrapper {
   overflow: hidden; }
