@@ -1,17 +1,20 @@
 +++
+weight = 1
 date = "2015-06-29T19:14:23-05:00"
 draft = true
-title = "Installation"
+title = "Install"
 
+[menu.main]
+parent = "Setup"
 +++
 
 - [Installation](#installation)
 - [Configuration](#configuration)
-	- [Basic Configuration](#basic-configuration)
-	- [Environment Configuration](#environment-configuration)
-	- [Configuration Caching](#configuration-caching)
-	- [Accessing Configuration Values](#accessing-configuration-values)
-	- [Naming Your Application](#naming-your-application)
+- [Basic Configuration](#basic-configuration)
+- [Environment Configuration](#environment-configuration)
+- [Configuration Caching](#configuration-caching)
+- [Accessing Configuration Values](#accessing-configuration-values)
+- [Naming Your Application](#naming-your-application)
 
 <a name="installation"></a>
 ## Installation
@@ -21,7 +24,7 @@ title = "Installation"
 The Gophersaurus framework has a few system requirements:
 
 <div class="content-list" markdown="1">
-- Golang >= 1.4
+- Golang Version >= 1.5
 </div>
 
 <a name="install-gophersaurus"></a>

@@ -1,22 +1,37 @@
-<nav class="navbar">
-      <div class="container">
-        <div class="navbar-header">
-          <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar">
-          <ul class="nav navbar-nav">
-          	<li role="presentation"><a href="/"><img src="/images/gb-white.svg" width="25"/></a></li>
-            <li role="presentation"><a href="/about">About</a></li>
-            <li role="presentation"><a href="/docs/install">Installation</a></li>
-            <li role="presentation"><a href="/docs/usage">Usage</a></li>
-            <li role="presentation"><a href="/faq">FAQ</a></li>
-            <li role="presentation"><a href="https://github.com/constabulary/gb">Contribute</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+<nav class="main">
+  <div class="container">
+    <a href="{{.Site.BaseURL}}" class="brand">
+      <img src="/docs/img/gophersaurus_trim_blue.png" height="30" alt="Gophersaurus logo">
+      Gophersaurus
+		</a>
+
+    <div class="responsive-sidebar-nav">
+		  <a href="#" class="toggle-slide menu-link btn">☰</a>
+		</div>
+
+		<div class="switcher">
+      <div class="dropdown">
+		    <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+			    {{ .Section }}
+			    <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+
+        {{ range $section, $pages := .Site.Sections }}
+            {{ if ne $section "" }}
+                <li role="presentation">
+                      <a role="menuitem" tabindex="-1" href="/docs/{{ $section }}">{{ title $section }}</a>
+                </li>
+            {{ end }}
+        {{ end }}
+		</ul>
+	</div>
+</div>
+
+			<ul class="main-nav">
+				<li class="nav-docs"><a href="/docs/{{ .Section }}">documentation</a></li>
+        <li class="nav-lumen"><a href="https://github.com/gophersaurus/govend">govend</a></li>
+        <li class="nav-lumen"><a href="https://github.com/gophersaurus/gf">gf</a></li>
+			</ul>
+		</div>
+	</nav>

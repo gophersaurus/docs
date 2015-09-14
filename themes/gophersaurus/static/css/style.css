@@ -1333,7 +1333,7 @@ pre.line-numbers > code {
     color: rgba(255, 255, 255, 0.5); }
   .btn:hover,
   .btn:active {
-    background: #e74430;
+    background: #0066cc;
     color: #fff; }
 
 footer.main {
@@ -1383,7 +1383,7 @@ nav.main {
     display: table;
     clear: both; }
   nav.main a.brand {
-    color: #e74430;
+    color: #0066cc;
     font-size: 21px;
     float: left;
     line-height: 90px;
@@ -1709,7 +1709,7 @@ nav.main {
   .sidebar a {
     line-height: 1.5; }
     .sidebar a:hover {
-      color: #e74430; }
+      color: #0066cc; }
 
 @media (max-width: 1080px) {
   .sidebar {
@@ -1812,9 +1812,9 @@ nav.main {
   .docs article a {
     text-decoration: underline; }
     .docs article a:hover {
-      color: #f1362f; }
+      color: #0066cc; }
   .docs article blockquote a:hover {
-    color: #fcd8d6; }
+    color: #66ccff; }
   .docs article table {
     border-collapse: collapse;
     width: 100%;

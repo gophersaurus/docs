@@ -1,8 +1,16 @@
 {{ partial "header.html" . }}
+
+{{ template "theme/partials/topnav.html" . }}
+
 <div class="docs-wrapper container">
-	<article>
-    <h1>{{ .Title }}</h1>
-    {{ .Content }}
+	<aside>
+		{{ template "theme/partials/sidebar.html" .Site.Menus.main }}
+	</aside>
+
+	<article article style="opacity: 1;">
+		<h1>{{ .Title }}</h1>
+		{{ .Content }}
   </article>
 </div>
+
 {{ partial "footer.html" . }}

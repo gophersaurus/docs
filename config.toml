@@ -11,3 +11,31 @@ MetaDataFormat = "yaml"
 
 [author]
     name = "Jack Spirou"
+
+[indexes]
+	tag = "tags"
+	group = "groups"
+
+[[menu.main]]
+	name = "Prologue"
+	weight = 1
+
+[[menu.main]]
+	name = "Setup"
+	weight = 2
+
+[[menu.main]]
+	name = "Basics"
+	weight = 3
+
+[[menu.main]]
+	name = "Architecture"
+	weight = 4
+
+[[menu.main]]
+	name = "Services"
+	weight = 5
+
+[[menu.main]]
+	name = "Database Admin"
+	weight = 6
