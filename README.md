@@ -20,7 +20,7 @@ Install using the Go tool:
 go get github.com/spf13/hugo
 ```
 
-Or follow these instructions for your platform: http://gohugo.io/overview/installing/
+Or follow these instructions for your platform: http://gohugo.io/docs/installing/
 
 ## Build
 
