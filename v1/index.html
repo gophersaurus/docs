@@ -50,7 +50,8 @@
 </div>
 
 			<ul class="main-nav">
-				<li class="nav-docs"><a href="/docs/v1">documentation</a></li>
+				<li class="nav-docs"><a href="/docs/v1">overview</a></li>
+        <li class="nav-docs"><a href="https://godoc.org/github.com/gophersaurus/gf.v1">api</a></li>
         <li class="nav-lumen"><a href="https://github.com/gophersaurus/govend">govend</a></li>
         <li class="nav-lumen"><a href="https://github.com/gophersaurus/gf">gf</a></li>
 			</ul>
@@ -68,7 +69,7 @@
 					<ul>
 						
 							
-									<li><a href="/docs/v1/api/">API Documentation</a></li>
+									<li><a href="/docs/v1/api/">API</a></li>
 							
 						
 					</ul>
@@ -153,177 +154,147 @@
 <ul>
 <li><a href="#installation">Installation</a></li>
 <li><a href="#configuration">Configuration</a></li>
-<li><a href="#basic-configuration">Basic Configuration</a></li>
-<li><a href="#environment-configuration">Environment Configuration</a></li>
-<li><a href="#configuration-caching">Configuration Caching</a></li>
-<li><a href="#accessing-configuration-values">Accessing Configuration Values</a></li>
-<li><a href="#naming-your-application">Naming Your Application</a></li>
+<li><a href="#environment-variables">Environment Variables</a></li>
+<li><a href="#access-configuration-variables">Access Configuration Variables</a></li>
 </ul>
 
 <p><a name="installation"></a></p>
 
 <h2 id="installation:d680e8a854a7cbad6d490c445cba2eba">Installation</h2>
 
-<h3 id="server-requirements:d680e8a854a7cbad6d490c445cba2eba">Server Requirements</h3>
+<h3 id="requirements:d680e8a854a7cbad6d490c445cba2eba">Requirements</h3>
 
-<p>The Gophersaurus framework has a few system requirements:</p>
+<p>Gophersaurus has a few system requirements:</p>
 
-<div class="content-list" markdown="1">
-- Golang Version >= 1.5
-</div>
+<ul>
+<li>installed version of Go <code>go1.5.1</code> or greater</li>
+<li><code>$GOPATH</code> has been set</li>
+<li><code>$GOPATH/bin</code> is part of <code>$PATH</code> (optional)</li>
+</ul>
 
 <p><a name="install-gophersaurus"></a></p>
 
 <h3 id="installing-gophersaurus:d680e8a854a7cbad6d490c445cba2eba">Installing Gophersaurus</h3>
 
-<p>Gophersaurus utilizes the <a href="https://github.com/gophersaurus/gf">gf</a> tool to start a project.</p>
+<p>The fastest way to start a new Gophersaurus project is with the <code>gf</code> tool.
+You can download the <code>gf</code> tool on your machine with the following command:</p>
 
-<h4 id="via-gf-tool:d680e8a854a7cbad6d490c445cba2eba">Via gf tool</h4>
-
-<p>First, download the <code>gf</code> installer tool on your machine using Go:</p>
-
-<pre><code>go get -u github.com/gophersaurus/gf
+<pre><code class="language-bash">$ go get -u github.com/gophersaurus/gf
 </code></pre>
 
-<p>Make sure to place the <code>$GOPATH/bin</code> directory in your PATH so the <code>gf</code> executable can be located by your system.</p>
+<blockquote>
+<p>NOTE: The <code>$</code> is not part of the command above, it represents the start of
+your terminal. The flag <code>-u</code> downloads and installs a fresh copy of the repo.</p>
+</blockquote>
 
-<p>Once installed, the simple <code>gf new</code> command will create a fresh Gophersaurus installation in the directory you specify. For instance, <code>gf new api</code> will create a directory named <code>api</code> containing a fresh Gophersaurus installation with all of Gophersaurus&rsquo;s dependencies already installed. This method of installation is much faster than installing via git:</p>
+<p>The <code>gf new</code> command will create a fresh Gophersaurus project.
+For example, the command <code>gf new api</code> will create a directory named <code>api</code> with a fresh Gophersaurus installation.</p>
 
-<pre><code>gf new api
+<p>More options are available that just <code>gf new</code>. If you run <code>gf -h</code> you will see the following:</p>
+
+<pre><code class="language-bash">$ gf -h
+The Gophersaurus project tool.
+
+Usage:
+   [flags]
+   [command]
+
+Available Commands:
+  new         Update Gophersaurus.
+  update      Update the Gophersaurus framework.
+  version     Installed version of the gf tool.
+
+Flags:
+  -v, --verbose[=false]: Print verbose output
+
+Use &quot; [command] --help&quot; for more information about a command.
 </code></pre>
 
 <p><a name="configuration"></a></p>
 
 <h2 id="configuration:d680e8a854a7cbad6d490c445cba2eba">Configuration</h2>
 
-<p><a name="basic-configuration"></a></p>
+<p>Gophersaurus manages configuration settings by leveraging spf13&rsquo;s <code>viper</code> package.</p>
 
-<h3 id="basic-configuration:d680e8a854a7cbad6d490c445cba2eba">Basic Configuration</h3>
+<blockquote>
+<p>You can find more about viper at <a href="https://github.com/spf13/viper">https://github.com/spf13/viper</a>.</p>
+</blockquote>
 
-<p>All of the configuration files for the Gophersaurus framework are stored in the <code>config</code> directory. Each option is documented, so feel free to look through the files and get familiar with the options available to you.</p>
+<p>All configuration settings are stored in a file named <code>config</code> under the <code>app</code> directory.
+The file format of <code>config</code> can be <code>JSON</code>, <code>XML</code>, or <code>YAML</code>, so your configuration file might be something like: <code>/app/config.yml</code>.
+Viper supports environment variables as well as <code>etcd</code> and <code>consul</code> out of the box.</p>
 
-<h4 id="directory-permissions:d680e8a854a7cbad6d490c445cba2eba">Directory Permissions</h4>
+<h4 id="port-application-keys:d680e8a854a7cbad6d490c445cba2eba">Port &amp; Application Keys</h4>
 
-<p>After installing Gophersaurus, you may need to configure some permissions. Directories within the <code>storage</code> and the <code>bootstrap/cache</code> directories should be writable by your web server. If you are using the <a href="/docs/{{version}}/homestead">Homestead</a> virtual machine, these permissions should already be set.</p>
+<p>The first thing you need to do when setting configuring variables is specify a port and API keys.</p>
 
-<h4 id="application-key:d680e8a854a7cbad6d490c445cba2eba">Application Key</h4>
+<p>Below is an example of a yaml config file that contains a port number and a single API key that accepts connections from any IP address:</p>
 
-<p>The next thing you should do after installing Gophersaurus is set your application key to a random string. If you installed Gophersaurus via Composer or the Gophersaurus installer, this key has already been set for you by the <code>key:generate</code> command. Typically, this string should be 32 characters long. The key can be set in the <code>.env</code> environment file. If you have not renamed the <code>.env.example</code> file to <code>.env</code>, you should do that now. <strong>If the application key is not set, your user sessions and other encrypted data will not be secure!</strong></p>
-
-<h4 id="additional-configuration:d680e8a854a7cbad6d490c445cba2eba">Additional Configuration</h4>
-
-<p>Gophersaurus needs almost no other configuration out of the box. You are free to get started developing! However, you may wish to review the <code>config/app.php</code> file and its documentation. It contains several options such as <code>timezone</code> and <code>locale</code> that you may wish to change according to your application.</p>
-
-<p>You may also want to configure a few additional components of Gophersaurus, such as:</p>
-
-<ul>
-<li><a href="/docs/{{version}}/cache#configuration">Cache</a></li>
-<li><a href="/docs/{{version}}/database#configuration">Database</a></li>
-<li><a href="/docs/{{version}}/session#configuration">Session</a></li>
-</ul>
-
-<p>Once Gophersaurus is installed, you should also <a href="/docs/{{version}}/installation#environment-configuration">configure your local environment</a>.</p>
-
-<p><a name="pretty-urls"></a></p>
-
-<h4 id="pretty-urls:d680e8a854a7cbad6d490c445cba2eba">Pretty URLs</h4>
-
-<p><strong>Apache</strong></p>
-
-<p>The framework ships with a <code>public/.htaccess</code> file that is used to allow URLs without <code>index.php</code>. If you use Apache to serve your Gophersaurus application, be sure to enable the <code>mod_rewrite</code> module.</p>
-
-<p>If the <code>.htaccess</code> file that ships with Gophersaurus does not work with your Apache installation, try this one:</p>
-
-<pre><code>Options +FollowSymLinks
-RewriteEngine On
-
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.php [L]
+<pre><code class="language-YAML">port: 5225
+keys:
+  gophersaurus:
+    - all
 </code></pre>
 
-<p><strong>Nginx</strong></p>
+<p>You can specify that only localhost connections are allowed for local development or whitelist specific IPs for production:</p>
 
-<p>On Nginx, the following directive in your site configuration will allow &ldquo;pretty&rdquo; URLs:</p>
-
-<pre><code>location / {
-    try_files $uri $uri/ /index.php?$query_string;
-}
+<pre><code class="language-YAML">port: 5225
+keys:
+  gophersaurus:
+    - all
+  localGophersaurus:
+    - localhost
+  whitelistGophersaurus:
+    - 192.168.1.1
+    - 10.10.20.21
+    - 8.8.8.8
+    - 8.8.4.4
 </code></pre>
 
-<p>Of course, when using <a href="/docs/{{version}}/homestead">Homestead</a>, pretty URLs will be configured automatically.</p>
+<p>Any kind of variables can be included in this configuration file as well.
+To access those variables</p>
 
-<p><a name="environment-configuration"></a></p>
+<p><a name="environment-variables"></a></p>
 
-<h3 id="environment-configuration:d680e8a854a7cbad6d490c445cba2eba">Environment Configuration</h3>
+<h3 id="environment-variables:d680e8a854a7cbad6d490c445cba2eba">Environment Variables</h3>
 
-<p>It is often helpful to have different configuration values based on the environment the application is running in. For example, you may wish to use a different cache driver locally than you do on your production server. It&rsquo;s easy using environment based configuration.</p>
+<p>The <code>config</code> package currently handles environment variables as well.
+Currently to enable them you must update the <code>config.AutomaticEnv()</code> method within the <code>/app/bootstrap/config.go</code> file.</p>
 
-<p>To make this a cinch, Gophersaurus utilizes the <a href="https://github.com/vlucas/phpdotenv">DotEnv</a> PHP library by Vance Lucas. In a fresh Gophersaurus installation, the root directory of your application will contain a <code>.env.example</code> file. If you install Gophersaurus via Composer, this file will automatically be renamed to <code>.env</code>. Otherwise, you should rename the file manually.</p>
+<p><a name="access-configuration-variables"></a></p>
 
-<p>All of the variables listed in this file will be loaded into the <code>$_ENV</code> PHP super-global when your application receives a request. You may use the <code>env</code> helper to retrieve values from these variables. In fact, if you review the Gophersaurus configuration files, you will notice several of the options already using this helper!</p>
+<h3 id="access-configuration-variables:d680e8a854a7cbad6d490c445cba2eba">Access Configuration Variables</h3>
 
-<p>Feel free to modify your environment variables as needed for your own local server, as well as your production environment. However, your <code>.env</code> file should not be committed to your application&rsquo;s source control, since each developer / server using your application could require a different environment configuration.</p>
+<p>You can easily access your configuration values using the <code>config</code> package.</p>
 
-<p>If you are developing with a team, you may wish to continue including a <code>.env.example</code> file with your application. By putting place-holder values in the example configuration file, other developers on your team can clearly see which environment variables are needed to run your application.</p>
+<blockquote>
+<p>The documentation for the <code>config</code> package can be found on <a href="http://godoc.org/github.com/gophersaurus/gf.v1/config">godoc</a>.</p>
+</blockquote>
 
-<h4 id="accessing-the-current-application-environment:d680e8a854a7cbad6d490c445cba2eba">Accessing The Current Application Environment</h4>
+<p>After including <code>github.com/gophersaurus/gf.v1/config</code> the configuration values may be accessed via the methods provided by the <code>config</code> package.</p>
 
-<p>The current application environment is determined via the <code>APP_ENV</code> variable from your <code>.env</code> file. You may access this value via the <code>environment</code> method on the <code>App</code> <a href="/docs/{{version}}/facades">facade</a>:</p>
+<p>For example, if you have a configuration file like:</p>
 
-<pre><code>$environment = App::environment();
+<pre><code class="language-YAML">port: 5225
+keys:
+  gophersaurus:
+    - all
+  localGophersaurus:
+    - localhost
+  whitelistGophersaurus:
+    - 192.168.1.1
+    - 10.10.20.21
+    - 8.8.8.8
+    - 8.8.4.4
 </code></pre>
 
-<p>You may also pass arguments to the <code>environment</code> method to check if the environment matches a given value. You may even pass multiple values if necessary:</p>
+<p>You can retrieve the <code>port</code> and <code>keys</code> values using the following <code>config</code> package methods:</p>
 
-<pre><code>if (App::environment('local')) {
-    // The environment is local
-}
-
-if (App::environment('local', 'staging')) {
-    // The environment is either local OR staging...
-}
+<pre><code class="language-go">port := config.GetString(&quot;port&quot;)
+keys := config.GetStringMapStringSlice(&quot;keys&quot;)
 </code></pre>
 
-<p>An application instance may also be accessed via the <code>app</code> helper method:</p>
-
-<pre><code>$environment = app()-&gt;environment();
-</code></pre>
-
-<p><a name="configuration-caching"></a></p>
-
-<h3 id="configuration-caching:d680e8a854a7cbad6d490c445cba2eba">Configuration Caching</h3>
-
-<p>To give your application a speed boost, you should cache all of your configuration files into a single file using the <code>config:cache</code> Artisan command. This will combine all of the configuration options for your application into a single file which can be loaded quickly by the framework.</p>
-
-<p>You should typically run the <code>config:cache</code> command as part of your deployment routine.</p>
-
-<p><a name="accessing-configuration-values"></a></p>
-
-<h3 id="accessing-configuration-values:d680e8a854a7cbad6d490c445cba2eba">Accessing Configuration Values</h3>
-
-<p>You may easily access your configuration values using the global <code>config</code> helper function. The configuration values may be accessed using &ldquo;dot&rdquo; syntax, which includes the name of the file and option you wish to access. A default value may also be specified and will be returned if the configuration option does not exist:</p>
-
-<pre><code>$value = config('app.timezone');
-</code></pre>
-
-<p>To set configuration values at runtime, pass an array to the <code>config</code> helper:</p>
-
-<pre><code>config(['app.timezone' =&gt; 'America/Chicago']);
-</code></pre>
-
-<p><a name="naming-your-application"></a></p>
-
-<h3 id="naming-your-application:d680e8a854a7cbad6d490c445cba2eba">Naming Your Application</h3>
-
-<p>After installing Gophersaurus, you may wish to &ldquo;name&rdquo; your application. By default, the <code>app</code> directory is namespaced under <code>App</code>, and autoloaded by Composer using the <a href="http://www.php-fig.org/psr/psr-4/">PSR-4 autoloading standard</a>. However, you may change the namespace to match the name of your application, which you can easily do via the <code>app:name</code> Artisan command.</p>
-
-<p>For example, if your application is named &ldquo;Horsefly&rdquo;, you could run the following command from the root of your installation:</p>
-
-<pre><code>php artisan app:name Horsefly
-</code></pre>
-
-<p>Renaming your application is entirely optional, and you are free to keep the <code>App</code> namespace if you wish.</p>
+<p>These methods also work for local environment variables.</p>
 
   </article>
 </div>
@@ -386,7 +357,7 @@ if (App::environment('local', 'staging')) {
 <script id="search_footer_template" type="text/template">
 	<div class="footer">
 		<a target="_blank" href="http://www.algolia.com">
-			<img width="50" src="docs/img/algolia-logo.png"/>
+			<img width="50" src="/docs/img/algolia-logo.png"/>
 			<div class="powered">powered by</div>
 			<div style="clear: both"></div>
 		</a>
