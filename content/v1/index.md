@@ -6,6 +6,7 @@ title = "Install"
 
 [menu.main]
 parent = "Setup"
+identifier = "v1"
 +++
 
 - [Installation](#installation)

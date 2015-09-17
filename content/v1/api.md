@@ -8,4 +8,4 @@ title = "API"
 parent = "Prologue"
 +++
 
-### The latest API docs are hosted on godoc.org: [![GoDoc](http://godoc.org/github.com/gophersaurus/gf.v1?status.png)](http://godoc.org/github.com/gophersaurus/gf.v1)
+### The latest API docs are hosted on godoc.org: [![GoDoc](../../img/godoc_badge.png)](http://godoc.org/github.com/gophersaurus/gf.v1)

@@ -9,6 +9,7 @@
 		  <a href="#" class="toggle-slide menu-link btn">☰</a>
 		</div>
 
+{{ if ne .Section "" }}
 		<div class="switcher">
       <div class="dropdown">
 		    <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
@@ -20,13 +21,14 @@
         {{ range $section, $pages := .Site.Sections }}
             {{ if ne $section "" }}
                 <li role="presentation">
-                      <a role="menuitem" tabindex="-1" href="/docs/{{ $section }}">{{ title $section }}</a>
+                      <a role="menuitem" tabindex="-1" href="/docs/{{ $section }}">{{ $section }}</a>
                 </li>
             {{ end }}
         {{ end }}
 		</ul>
 	</div>
 </div>
+{{ end }}
 
 			<ul class="main-nav">
 				<li class="nav-docs"><a href="/docs/v1">overview</a></li>

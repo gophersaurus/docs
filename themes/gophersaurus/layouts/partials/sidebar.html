@@ -1,12 +1,15 @@
 <section class="sidebar">
-	{{ range . }}
+	{{ $section := .Section }}
+	{{ range $key, $menu := .Site.Menus.main }}
 			<ul>
 				<li>
-					{{ .Name }}
+					{{ $menu.Name }}
 					<ul>
-						{{ if .HasChildren }}
-							{{ range .Children }}
-									<li><a href="{{.URL}}">{{ .Name }}</a></li>
+						{{ if $menu.HasChildren }}
+							{{ range $menuKey, $submenu := $menu.Children }}
+								{{ if in $submenu.URL $section }}
+									<li><a href="{{$submenu.URL}}">{{ $submenu.Name }}</a></li>
+								{{ end }}
 							{{ end }}
 						{{ end }}
 					</ul>
