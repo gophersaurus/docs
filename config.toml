@@ -1,4 +1,5 @@
 baseurl = "https://gophersaurus.github.io/docs/"
+canonifyurls = true
 languageCode = "en-us"
 title = "Gophersaurus Framework"
 theme = "gophersaurus"
