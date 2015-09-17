@@ -1,7 +1,7 @@
 <nav class="main">
   <div class="container">
     <a href="https://gophersaurus.github.io/docs/" class="brand">
-      <img src="/docs/img/gophersaurus_trim_blue.png" height="30" alt="Gophersaurus logo">
+      <img src="/img/gophersaurus_trim_blue.png" height="30" alt="Gophersaurus logo">
       Gophersaurus
 		</a>
 
@@ -21,7 +21,7 @@
         {{ range $section, $pages := .Site.Sections }}
             {{ if ne $section "" }}
                 <li role="presentation">
-                      <a role="menuitem" tabindex="-1" href="/docs/{{ $section }}">{{ $section }}</a>
+                      <a role="menuitem" tabindex="-1" href="/{{ $section }}">{{ $section }}</a>
                 </li>
             {{ end }}
         {{ end }}
