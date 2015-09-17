@@ -1,0 +1,363 @@
+<!doctype html>
+  <html>
+  <head>
+  	<meta charset="utf-8">
+  	<title>Install - Gophersaurus - The Golang Framework For APIs</title>
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  	<meta name="author" content="Jack Spirou">
+  	<meta name="description" content="Gophersaurus - The Golang Framework For APIs.">
+  	<meta name="keywords" content="gophersaurus, golang, framework, api, jack spirou">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	
+  	<link rel="stylesheet" href="/docs/css/style.css">
+  	<link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+
+  <body class="docs language-php">
+
+
+
+<nav class="main">
+  <div class="container">
+    <a href="https://gophersaurus.github.io/docs/v1/" class="brand">
+      <img src="/docs/img/gophersaurus_trim_blue.png" height="30" alt="Gophersaurus logo">
+      Gophersaurus
+		</a>
+
+    <div class="responsive-sidebar-nav">
+		  <a href="#" class="toggle-slide menu-link btn">☰</a>
+		</div>
+
+
+		<div class="switcher">
+      <div class="dropdown">
+		    <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+			    v1
+			    <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+
+        
+            
+                <li role="presentation">
+                      <a role="menuitem" tabindex="-1" href="/docs/v1">v1</a>
+                </li>
+            
+        
+		</ul>
+	</div>
+</div>
+
+
+			<ul class="main-nav">
+				<li class="nav-docs"><a href="/docs/v1">overview</a></li>
+        <li class="nav-docs"><a href="https://godoc.org/github.com/gophersaurus/gf.v1">api</a></li>
+        <li class="nav-lumen"><a href="https://github.com/gophersaurus/govend">govend</a></li>
+        <li class="nav-lumen"><a href="https://github.com/gophersaurus/gf">gf</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+<div class="docs-wrapper container">
+	<aside>
+		<section class="sidebar">
+	
+	
+			<ul>
+				<li>
+					Prologue
+					<ul>
+						
+							
+								
+									<li><a href="/docs/v1/api/">API</a></li>
+								
+							
+						
+					</ul>
+				</li>
+			</ul>
+	
+			<ul>
+				<li>
+					Setup
+					<ul>
+						
+							
+								
+									<li><a href="/docs/v1/">Install</a></li>
+								
+							
+						
+					</ul>
+				</li>
+			</ul>
+	
+			<ul>
+				<li>
+					Basics
+					<ul>
+						
+					</ul>
+				</li>
+			</ul>
+	
+			<ul>
+				<li>
+					Architecture
+					<ul>
+						
+					</ul>
+				</li>
+			</ul>
+	
+			<ul>
+				<li>
+					Services
+					<ul>
+						
+					</ul>
+				</li>
+			</ul>
+	
+			<ul>
+				<li>
+					Database Admin
+					<ul>
+						
+					</ul>
+				</li>
+			</ul>
+	
+</section>
+
+	</aside>
+
+	<article article style="opacity: 1;">
+		<h1>Install</h1>
+		
+
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#environment-variables">Environment Variables</a></li>
+<li><a href="#access-configuration-variables">Access Configuration Variables</a></li>
+</ul>
+
+<p><a name="installation"></a></p>
+
+<h2 id="installation:d680e8a854a7cbad6d490c445cba2eba">Installation</h2>
+
+<h3 id="requirements:d680e8a854a7cbad6d490c445cba2eba">Requirements</h3>
+
+<p>Gophersaurus has a few system requirements:</p>
+
+<ul>
+<li>installed version of Go <code>go1.5.1</code> or greater</li>
+<li><code>$GOPATH</code> has been set</li>
+<li><code>$GOPATH/bin</code> is part of <code>$PATH</code> (optional)</li>
+</ul>
+
+<p><a name="install-gophersaurus"></a></p>
+
+<h3 id="installing-gophersaurus:d680e8a854a7cbad6d490c445cba2eba">Installing Gophersaurus</h3>
+
+<p>The fastest way to start a new Gophersaurus project is with the <code>gf</code> tool.
+You can download the <code>gf</code> tool on your machine with the following command:</p>
+
+<pre><code class="language-bash">$ go get -u github.com/gophersaurus/gf
+</code></pre>
+
+<blockquote>
+<p>NOTE: The <code>$</code> is not part of the command above, it represents the start of
+your terminal. The flag <code>-u</code> downloads and installs a fresh copy of the repo.</p>
+</blockquote>
+
+<p>The <code>gf new</code> command will create a fresh Gophersaurus project.
+For example, the command <code>gf new api</code> will create a directory named <code>api</code> with a fresh Gophersaurus installation.</p>
+
+<p>More options are available that just <code>gf new</code>. If you run <code>gf -h</code> you will see the following:</p>
+
+<pre><code class="language-bash">$ gf -h
+The Gophersaurus project tool.
+
+Usage:
+   [flags]
+   [command]
+
+Available Commands:
+  new         Update Gophersaurus.
+  update      Update the Gophersaurus framework.
+  version     Installed version of the gf tool.
+
+Flags:
+  -v, --verbose[=false]: Print verbose output
+
+Use &quot; [command] --help&quot; for more information about a command.
+</code></pre>
+
+<p><a name="configuration"></a></p>
+
+<h2 id="configuration:d680e8a854a7cbad6d490c445cba2eba">Configuration</h2>
+
+<p>Gophersaurus manages configuration settings by leveraging spf13&rsquo;s <code>viper</code> package.</p>
+
+<blockquote>
+<p>You can find more about viper at <a href="https://github.com/spf13/viper">https://github.com/spf13/viper</a>.</p>
+</blockquote>
+
+<p>All configuration settings are stored in a file named <code>config</code> under the <code>app</code> directory.
+The file format of <code>config</code> can be <code>JSON</code>, <code>XML</code>, or <code>YAML</code>, so your configuration file might be something like: <code>/app/config.yml</code>.
+Viper supports environment variables as well as <code>etcd</code> and <code>consul</code> out of the box.</p>
+
+<h4 id="port-application-keys:d680e8a854a7cbad6d490c445cba2eba">Port &amp; Application Keys</h4>
+
+<p>The first thing you need to do when setting configuring variables is specify a port and API keys.</p>
+
+<p>Below is an example of a yaml config file that contains a port number and a single API key that accepts connections from any IP address:</p>
+
+<pre><code class="language-YAML">port: 5225
+keys:
+  gophersaurus:
+    - all
+</code></pre>
+
+<p>You can specify that only localhost connections are allowed for local development or whitelist specific IPs for production:</p>
+
+<pre><code class="language-YAML">port: 5225
+keys:
+  gophersaurus:
+    - all
+  localGophersaurus:
+    - localhost
+  whitelistGophersaurus:
+    - 192.168.1.1
+    - 10.10.20.21
+    - 8.8.8.8
+    - 8.8.4.4
+</code></pre>
+
+<p>Any kind of variables can be included in this configuration file as well.
+To access those variables</p>
+
+<p><a name="environment-variables"></a></p>
+
+<h3 id="environment-variables:d680e8a854a7cbad6d490c445cba2eba">Environment Variables</h3>
+
+<p>The <code>config</code> package currently handles environment variables as well.
+Currently to enable them you must update the <code>config.AutomaticEnv()</code> method within the <code>/app/bootstrap/config.go</code> file.</p>
+
+<p><a name="access-configuration-variables"></a></p>
+
+<h3 id="access-configuration-variables:d680e8a854a7cbad6d490c445cba2eba">Access Configuration Variables</h3>
+
+<p>You can easily access your configuration values using the <code>config</code> package.</p>
+
+<blockquote>
+<p>The documentation for the <code>config</code> package can be found on <a href="http://godoc.org/github.com/gophersaurus/gf.v1/config">godoc</a>.</p>
+</blockquote>
+
+<p>After including <code>github.com/gophersaurus/gf.v1/config</code> the configuration values may be accessed via the methods provided by the <code>config</code> package.</p>
+
+<p>For example, if you have a configuration file like:</p>
+
+<pre><code class="language-YAML">port: 5225
+keys:
+  gophersaurus:
+    - all
+  localGophersaurus:
+    - localhost
+  whitelistGophersaurus:
+    - 192.168.1.1
+    - 10.10.20.21
+    - 8.8.8.8
+    - 8.8.4.4
+</code></pre>
+
+<p>You can retrieve the <code>port</code> and <code>keys</code> values using the following <code>config</code> package methods:</p>
+
+<pre><code class="language-go">port := config.GetString(&quot;port&quot;)
+keys := config.GetStringMapStringSlice(&quot;keys&quot;)
+</code></pre>
+
+<p>These methods also work for local environment variables.</p>
+
+  </article>
+</div>
+
+
+<footer class="main">
+
+		<p>Gophersaurus is a trademark of Jack Spirou. Copyright &copy; Jack Spirou.</p>
+		<p class="less-significant"><a href="http://jackmcdade.com">Original Design based on Jack McDade's work</a> - <a href="http://laravel.com">laravel.com</a></p>
+	</footer>
+
+	<script>
+  var algolia_app_id      = 'SC7K1CQIP8';
+	var algolia_search_key  = 'f27109a910f6de8b0d5e270ebf4b1f00';
+	var version             = '0.5';
+</script>
+
+<script id="search_suggestion_template" type="text/template">
+	<div class="autocomplete-wrapper">
+		" {{ #_highlightResult.h1 }} "
+		<div class="h1">
+			"{{{ _highlightResult.h1.value }}}"
+		</div>
+		\{\{\/_highlightResult\.h1\}\}
+
+		<div class="sub-section">
+			\{\{#_highlightResult\.h2\}\}
+			<div class="h2">
+				<span class="hash">#</span> "{{{ _highlightResult.h2.value }}}"
+			</div>
+			\{\{\/_highlightResult\.h2\}\}
+
+			\{\{#_highlightResult\.h3\}\}
+			<div class="h3">
+				> \{\{\{ _highlightResult\.h3\.value \}\}\}
+			</div>
+			"{{/_highlightResult.h3}}"
+
+			"{{#_highlightResult.h4}}"
+			<div class="h4">
+				"\u003e {{{ _highlightResult.h4.value }}}"
+			</div>
+			\{\{\/_highlightResult\.h4\}\}
+		</div>
+
+		"{{#_highlightResult.content}}"
+		<div class="content">
+			"{{{ _highlightResult.content.value }}}"
+		</div>
+		\{\{\/_highlightResult\.content\}\}
+	</div>
+</script>
+
+<script id="search_empty_template" type="text/template">
+	<div class="autocomplete-wrapper empty">
+		<div class="h2">We didn't find any result for \x22{{query}}\x22. Sorry!</div>
+	</div>
+</script>
+
+<script id="search_footer_template" type="text/template">
+	<div class="footer">
+		<a target="_blank" href="http://www.algolia.com">
+			<img width="50" src="/docs/img/algolia-logo.png"/>
+			<div class="powered">powered by</div>
+			<div style="clear: both"></div>
+		</a>
+	</div>
+</script>
+
+
+	<script src="/docs/js/script.js"></script>
+	<script src="/docs/js/viewport-units-buggyfill.js"></script>
+	<script>window.viewportUnitsBuggyfill.init();</script>
+	<script>
+		
+	</script>
+</body>
+</html>
+
