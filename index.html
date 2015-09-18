@@ -31,9 +31,10 @@
 
 			<ul class="main-nav">
 				<li class="nav-docs"><a href="https://gophersaurus.github.io/docs/v1/">overview</a></li>
+        <li class="nav-lumen"><a href="https://github.com/gophersaurus/gf">gf</a></li>
         <li class="nav-docs"><a href="https://godoc.org/github.com/gophersaurus/gf.v1">api</a></li>
         <li class="nav-lumen"><a href="https://github.com/gophersaurus/govend">govend</a></li>
-        <li class="nav-lumen"><a href="https://github.com/gophersaurus/gf">gf</a></li>
+        <li class="nav-lumen"><a href="https://github.com/gophersaurus/framework"><img style="position: relative; top: 10px;" src="https://gophersaurus.github.io/docs/img/GitHub-Mark-32px.png"/></a></li>
 			</ul>
 		</div>
 	</nav>
@@ -61,7 +62,7 @@
 
   import "github.com/gophersaurus/gf.v1/http"
 
-  // Home is a business  controller.
+  // Home is a controller.
   var Home = struct {
     Index func(resp http.Responder, req *http.Request)
   }{
