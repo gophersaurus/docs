@@ -23,33 +23,33 @@ parent = "Basics"
 <a name="introduction"></a>
 ## Introduction
 
-Instead of defining all of your request handling logic in a single `routes.php` file, you may wish to organize this behavior using Controller classes. Controllers can group related HTTP request handling logic into a class. Controllers are typically stored in the `app/Http/Controllers` directory.
+Instead of defining all of your request handling logic in a single `routes.go` file, you may wish to organize this behavior using controller structures.
+Controller structs can group related HTTP request handling logic into a single object.
+Controllers are stored in the `controllers` package located in the `app/controllers/` directory.
 
 <a name="basic-controllers"></a>
 ## Basic Controllers
 
-Here is an example of a basic controller class. All Laravel controllers should extend the base controller class included with the default Laravel installation:
+Here is an example of a basic controller.
+All Gophersaurus controllers are simple structs.
+We recommend the pattern of declaring anonymous public structs:
 
-    <?php
+```go
+package controllers
 
-    namespace App\Http\Controllers;
+import "github.com/gophersaurus/gf.v1/http"
 
-    use App\User;
-    use App\Http\Controllers\Controller;
+// Home is a controller.
+var Home = struct {
+	Index func(resp http.Responder, req *http.Request)
+}{
 
-    class UserController extends Controller
-    {
-        /**
-         * Show the profile for the given user.
-         *
-         * @param  int  $id
-         * @return Response
-         */
-        public function showProfile($id)
-        {
-            return view('user.profile', ['user' => User::findOrFail($id)]);
-        }
-    }
+  // Index is an action method for a GET request.
+	Index: func(resp http.Responder, req *http.Request) {
+		resp.Write(req, "Welcome fellow gopher.")
+	},
+}
+```
 
 We can route to the controller action like so:
 
