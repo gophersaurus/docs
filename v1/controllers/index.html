@@ -329,7 +329,7 @@ The controller will contain a method for each of the available resource operatio
 <p>Next, you may register a resourceful route to the controller:</p>
 
 <pre><code class="language-go">func register(r router.Router) {
-  r.Resource(&quot;/photos&quot;, &quot;photo_id&quot;, c.Photos)
+  r.Resource(&quot;/photos&quot;, &quot;id&quot;, c.Photos)
 }
 </code></pre>
 
