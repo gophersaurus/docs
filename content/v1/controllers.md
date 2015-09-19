@@ -121,10 +121,10 @@ Verb      | Path                  | Action       | Route Method
 ----------|-----------------------|--------------|---------------------
 GET       | `/photo`              | index        | photo.Index
 POST      | `/photo`              | store        | photo.Store
-GET       | `/photo/{photo}`      | show         | photo.Show
-PUT       | `/photo/{photo}`      | apply        | photo.Apply
-PATCH     | `/photo/{photo}`      | update       | photo.Update
-DELETE    | `/photo/{photo}`      | destroy      | photo.Destroy
+GET       | `/photo/:id`          | show         | photo.Show
+PUT       | `/photo/:id`          | apply        | photo.Apply
+PATCH     | `/photo/:id`          | update       | photo.Update
+DELETE    | `/photo/:id`          | destroy      | photo.Destroy
 
 If a resource controller contains a method for each action method above it will satisfy the `Resourcer` interface.
 
