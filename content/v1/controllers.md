@@ -144,6 +144,6 @@ Next, you may register a resourceful route to the controller:
 
 ```go
 func register(r router.Router) {
-  r.Resource("/photos", "photo_id", c.Photos)
+  r.Resource("/photos", "id", c.Photos)
 }
 ```
