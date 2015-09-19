@@ -20,8 +20,8 @@
 <nav class="main">
   <div class="container">
     <a href="https://gophersaurus.github.io/docs/" class="brand">
-      <img src="http://localhost:1313/docs/img/gophersaurus_trim_blue.png" height="30" alt="Gophersaurus logo">
-      Gophersaurus
+      <img src="http://localhost:1313/docs/img/gophersaurus_trim_blue.png" height="30" alt="gophersaurus logo">
+      gophersaurus
 		</a>
 
     <div class="responsive-sidebar-nav">
@@ -184,29 +184,29 @@
 <li><a href="#defining-middleware">Defining Middleware</a></li>
 <li><a href="#registering-middleware">Registering Middleware</a></li>
 <li><a href="#middleware-parameters">Middleware Parameters</a></li>
-<li><a href="#terminable-middleware">Terminable Middleware</a></li>
 </ul>
 
 <p><a name="introduction"></a></p>
 
 <h2 id="introduction:37ab2f15ff048f67959bcac0a6032f32">Introduction</h2>
 
-<p>HTTP middleware provide a convenient mechanism for filtering HTTP requests entering your application. For example, Laravel includes a middleware that verifies the user of your application is authenticated. If the user is not authenticated, the middleware will redirect the user to the login screen. However, if the user is authenticated, the middleware will allow the request to proceed further into the application.</p>
+<p>HTTP middleware provide a convenient mechanism for filtering HTTP requests entering your application.
+For example, gophersaurus includes a middleware that verifies that the client has a valid API key and whitelisted IP address.
+If the client does not provided a proper API key or is not a whitelisted IP, the middleware will not allow the request to proceed further into the application.</p>
 
-<p>Of course, additional middleware can be written to perform a variety of tasks besides authentication. A CORS middleware might be responsible for adding the proper headers to all responses leaving your application. A logging middleware might log all incoming requests to your application.</p>
+<p>Of course, additional middleware can be written to perform a variety of tasks besides authentication.
+A CORS middleware might be responsible for adding the proper headers to all responses leaving your application.
+A logging middleware might log all incoming requests to your application.</p>
 
-<p>There are several middleware included in the Laravel framework, including middleware for maintenance, authentication, CSRF protection, and more. All of these middleware are located in the <code>app/Http/Middleware</code> directory.</p>
+<p>All middleware is located in the <code>/app/middleware</code> directory.</p>
 
 <p><a name="defining-middleware"></a></p>
 
 <h2 id="defining-middleware:37ab2f15ff048f67959bcac0a6032f32">Defining Middleware</h2>
 
-<p>To create a new middleware, use the <code>make:middleware</code> Artisan command:</p>
+<p>To create a new middleware, add a <code>.go</code> file to the <code>/app/middleware</code> directory.</p>
 
-<pre><code>php artisan make:middleware OldMiddleware
-</code></pre>
-
-<p>This command will place a new <code>OldMiddleware</code> class within your <code>app/Http/Middleware</code> directory. In this middleware, we will only allow access to the route if the supplied <code>age</code> is greater than 200. Otherwise, we will redirect the users back to the &ldquo;home&rdquo; URI.</p>
+<p>Below is an example middleware.  In this middleware, we will only allow access to the route if the supplied <code>age</code> is greater than 200. Otherwise, we will redirect the users back to the &ldquo;home&rdquo; URI.</p>
 
 <pre><code>&lt;?php
 
@@ -358,36 +358,6 @@ class RoleMiddleware
     //
 }]);
 </code></pre>
-
-<p><a name="terminable-middleware"></a></p>
-
-<h2 id="terminable-middleware:37ab2f15ff048f67959bcac0a6032f32">Terminable Middleware</h2>
-
-<p>Sometimes a middleware may need to do some work after the HTTP response has already been sent to the browser. For example, the &ldquo;session&rdquo; middleware included with Laravel writes the session data to storage <em>after</em> the response has been sent to the browser. To accomplish this, define the middleware as &ldquo;terminable&rdquo; by adding a <code>terminate</code> method to the middleware:</p>
-
-<pre><code>&lt;?php
-
-namespace Illuminate\Session\Middleware;
-
-use Closure;
-
-class StartSession
-{
-    public function handle($request, Closure $next)
-    {
-        return $next($request);
-    }
-
-    public function terminate($request, $response)
-    {
-        // Store the session data...
-    }
-}
-</code></pre>
-
-<p>The <code>terminate</code> method should receive both the request and the response. Once you have defined a terminable middleware, you should add it to the list of global middlewares in your HTTP kernel.</p>
-
-<p>When calling the <code>terminate</code> method on your middleware, Laravel will resolve a fresh instance of the middleware from the <a href="http://localhost:1313/docs/docs/{{version}}/container">service container</a>. If you would like to use the same middleware instance when the <code>handle</code> and <code>terminate</code> methods are called, register the middleware with the container using the container&rsquo;s <code>singleton</code> method.</p>
 
   </article>
 </div>
