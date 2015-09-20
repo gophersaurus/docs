@@ -1,7 +1,7 @@
 +++
 weight = 1
 date = "2015-06-29T19:14:23-05:00"
-draft = true
+draft = false
 title = "Middleware"
 
 [menu.main]
@@ -10,8 +10,6 @@ parent = "Basics"
 
 - [Introduction](#introduction)
 - [Defining Middleware](#defining-middleware)
-- [Registering Middleware](#registering-middleware)
-- [Middleware Parameters](#middleware-parameters)
 
 <a name="introduction"></a>
 ## Introduction
@@ -29,147 +27,54 @@ All middleware is located in the `/app/middleware` directory.
 <a name="defining-middleware"></a>
 ## Defining Middleware
 
+[Middleware](https://godoc.org/github.com/gophersaurus/gf.v1/router#Middleware) has been designed to bridge the `router` and `controllers` packages.
+Middleware is defined in the `middleware` package located in the `/app/middleware` directory.
+The `Middleware` type represents a function that takes a `Handler` type and returns a `Handler` type.
+This taking and returns of a `Handler` type creates a chain of `Middleware`.
+```go
+type Middleware func(http.Handler) http.Handler
+```
+
 To create a new middleware, add a `.go` file to the `/app/middleware` directory.
 
-Below is an example middleware.  In this middleware, we will only allow access to the route if the supplied `age` is greater than 200. Otherwise, we will redirect the users back to the "home" URI.
+Below is an example middleware.  In this middleware, we will only allow parameter values for age that are equal or greater than than 200. Otherwise, we will return an error message.
 
-    <?php
+```go
+// Age describes a middleware that checks the age parameter
+// for a value equal or greater than 200.
+type Age struct {
+  next http.Handler
+}
 
-    namespace App\Http\Middleware;
+// Do takes a handler and executes age middleware.
+func (a Age) Do(h http.Handler) http.Handler {
+	a.next = h
+	return a
+}
 
-    use Closure;
+// ServeHTTP fulfills the http package interface for middleware.
+func (a Age) ServeHTTP(resp http.Responder, req *http.Request) {
 
-    class OldMiddleware
-    {
-        /**
-         * Run the request filter.
-         *
-         * @param  \Illuminate\Http\Request  $request
-         * @param  \Closure  $next
-         * @return mixed
-         */
-        public function handle($request, Closure $next)
-        {
-            if ($request->input('age') <= 200) {
-                return redirect('home');
-            }
+  // get the value of the age parameter
+  age := req.Param("age")
 
-            return $next($request);
-        }
+  // convert age from a string type to an integer type
+  if i, err := strconv.Atoi(age); err == nil {
+    resp.WriteErrs(req, err.Error(), fmt.Sprintf("unable to convert '%s' to a string", age)
+    return
+  }
 
-    }
+  // check the value of age is greater or equal to 200
+  if i < 200 {
+    resp.WriteErrs(req, "the value of age must be greater than 200")
+    return
+  }
 
-As you can see, if the given `age` is less than or equal to `200`, the middleware will return an HTTP redirect to the client; otherwise, the request will be passed further into the application. To pass the request deeper into the application (allowing the middleware to "pass"), simply call the `$next` callback with the `$request`.
+  // execute the next middleware
+  a.next.ServeHTTP(resp, req)
+}
+```
+
+As you can see, if the given `age` is less than `200`, the middleware will return an HTTP error to the client; otherwise, the request will be passed further into the application.
 
 It's best to envision middleware as a series of "layers" HTTP requests must pass through before they hit your application. Each layer can examine the request and even reject it entirely.
-
-### *Before* / *After* Middleware
-
-Whether a middleware runs before or after a request depends on the middleware itself. For example, the following middleware would perform some task **before** the request is handled by the application:
-
-    <?php
-
-    namespace App\Http\Middleware;
-
-    use Closure;
-
-    class BeforeMiddleware
-    {
-        public function handle($request, Closure $next)
-        {
-            // Perform action
-
-            return $next($request);
-        }
-    }
-
-However, this middleware would perform its task **after** the request is handled by the application:
-
-    <?php
-
-    namespace App\Http\Middleware;
-
-    use Closure;
-
-    class AfterMiddleware
-    {
-        public function handle($request, Closure $next)
-        {
-            $response = $next($request);
-
-            // Perform action
-
-            return $response;
-        }
-    }
-
-<a name="registering-middleware"></a>
-## Registering Middleware
-
-### Global Middleware
-
-If you want a middleware to be run during every HTTP request to your application, simply list the middleware class in the `$middleware` property of your `app/Http/Kernel.php` class.
-
-### Assigning Middleware To Routes
-
-If you would like to assign middleware to specific routes, you should first assign the middleware a short-hand key in your `app/Http/Kernel.php` file. By default, the `$routeMiddleware` property of this class contains entries for the middleware included with Laravel. To add your own, simply append it to this list and assign it a key of your choosing. For example:
-
-    // Within App\Http\Kernel Class...
-
-    protected $routeMiddleware = [
-        'auth' => \App\Http\Middleware\Authenticate::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-    ];
-
-Once the middleware has been defined in the HTTP kernel, you may use the `middleware` key in the route options array:
-
-    Route::get('admin/profile', ['middleware' => 'auth', function () {
-        //
-    }]);
-
-Use an array to assign multiple middleware to the route:
-
-    Route::get('/', ['middleware' => ['first', 'second'], function () {
-        //
-    }]);
-
-<a name="middleware-parameters"></a>
-## Middleware Parameters
-
-Middleware can also receive additional custom parameters. For example, if your application needs to verify that the authenticated user has a given "role" before performing a given action, you could create a `RoleMiddleware` that receives a role name as an additional argument.
-
-Additional middleware parameters will be passed to the middleware after the `$next` argument:
-
-    <?php
-
-    namespace App\Http\Middleware;
-
-    use Closure;
-
-    class RoleMiddleware
-    {
-        /**
-         * Run the request filter.
-         *
-         * @param  \Illuminate\Http\Request  $request
-         * @param  \Closure  $next
-         * @param  string  $role
-         * @return mixed
-         */
-        public function handle($request, Closure $next, $role)
-        {
-            if (! $request->user()->hasRole($role)) {
-                // Redirect...
-            }
-
-            return $next($request);
-        }
-
-    }
-
-Middleware parameters may be specified when defining the route by separating the middleware name and parameters with a `:`. Multiple parameters should be delimited by commas:
-
-    Route::put('post/{id}', ['middleware' => 'role:editor', function ($id) {
-        //
-    }]);
