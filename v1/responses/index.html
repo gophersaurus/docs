@@ -207,47 +207,35 @@
 
 <h2 id="basic-responses:a9fd9c163aecade52fef4c416dfaef41">Basic Responses</h2>
 
-<p>Of course, all routes and controllers should return some kind of response to be sent back to the user&rsquo;s browser. Laravel provides several different ways to return responses. The most basic response is simply returning a string from a route or controller:</p>
+<p>Of course, all controllers should return some kind of response to be sent back to the client.
+Gophersaurus provides a <code>http.Responder</code> interface that the <code>http.Response</code> satisfies.</p>
 
-<pre><code>Route::get('/', function () {
-    return 'Hello World';
-});
+<pre><code class="language-go">func Index(resp http.ResponseWriter, req *http.Request) {
+  resp.Write(req, &quot;Welcome fellow gopher.&quot;)
+}
 </code></pre>
 
-<p>The given string will automatically be converted into an HTTP response by the framework.</p>
+<p>The given string will automatically be converted into an HTTP response by the framework in the response format requested.
+Response formats include <code>JSON</code>, <code>JSONP</code>, <code>XML</code>, and <code>YAML</code>.</p>
 
-<p>However, for most routes and controller actions, you will be returning a full <code>Illuminate\Http\Response</code> instance or a <a href="http://localhost:1313/docs/docs/{{version}}/views">view</a>. Returning a full <code>Response</code> instance allows you to customize the response&rsquo;s HTTP status code and headers. A <code>Response</code> instance inherits from the <code>Symfony\Component\HttpFoundation\Response</code> class, providing a variety of methods for building HTTP responses:</p>
-
-<pre><code>use Illuminate\Http\Response;
-
-Route::get('home', function () {
-    return (new Response($content, $status))
-                  -&gt;header('Content-Type', $value);
-});
-</code></pre>
-
-<p>For convenience, you may also use the <code>response</code> helper:</p>
-
-<pre><code>Route::get('home', function () {
-    return response($content, $status)
-                  -&gt;header('Content-Type', $value);
-});
-</code></pre>
+<p>The gophersaurus <code>http.Responder</code> interface contains all the methods of the <code>http.ResponseWriter</code> object. Therefore, anything a golang <code>http.HandlerFunc</code> can do so can a gophersaurus <code>http.HandlerFunc</code>.</p>
 
 <blockquote>
-<p><strong>Note:</strong> For a full list of available <code>Response</code> methods, check out its <a href="http://laravel.com/api/master/Illuminate/Http/Response.html">API documentation</a> and the <a href="http://api.symfony.com/2.7/Symfony/Component/HttpFoundation/Response.html">Symfony API documentation</a>.</p>
+<p><strong>Note:</strong> For a full list of available <code>Response</code> methods, check out its <a href="https://godoc.org/github.com/gophersaurus/gf.v1/http#Response">API documentation</a> and the <a href="http://golang.org/pkg/net/http/#Response">Golang API documentation</a>.</p>
 </blockquote>
 
 <p><a name="attaching-headers-to-responses"></a></p>
 
 <h4 id="attaching-headers-to-responses:a9fd9c163aecade52fef4c416dfaef41">Attaching Headers To Responses</h4>
 
-<p>Keep in mind that most response methods are chainable, allowing for the fluent building of responses. For example, you may use the <code>header</code> method to add a series of headers to the response before sending it back to the user:</p>
+<p>You may use the <code>Header</code> method to add a series of headers to the response before sending it back to the client:</p>
 
-<pre><code>return response($content)
-            -&gt;header('Content-Type', $type)
-            -&gt;header('X-Header-One', 'Header Value')
-            -&gt;header('X-Header-Two', 'Header Value');
+<pre><code class="language-go">func Index(resp http.Responder, req *http.Request) {
+  resp.Header(&quot;Content-Type&quot;, &quot;text/plain&quot;)
+  resp.Header(&quot;X-Header-One&quot;, &quot;Header Value&quot;)
+  resp.Header(&quot;X-Header-Two&quot;, &quot;Header Value&quot;)
+  resp.Write(req, &quot;Welcome fellow gopher.&quot;)
+}
 </code></pre>
 
 <p><a name="attaching-cookies-to-responses"></a></p>
