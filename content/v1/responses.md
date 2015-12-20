@@ -24,41 +24,35 @@ parent = "Basics"
 <a name="basic-responses"></a>
 ## Basic Responses
 
-Of course, all routes and controllers should return some kind of response to be sent back to the user's browser. Laravel provides several different ways to return responses. The most basic response is simply returning a string from a route or controller:
+Of course, all controllers should return some kind of response to be sent back to the client.
+Gophersaurus provides a `http.Responder` interface that the `http.Response` satisfies.
 
-    Route::get('/', function () {
-        return 'Hello World';
-    });
+```go
+func Index(resp http.ResponseWriter, req *http.Request) {
+  resp.Write(req, "Welcome fellow gopher.")
+}
+```
 
-The given string will automatically be converted into an HTTP response by the framework.
+The given string will automatically be converted into an HTTP response by the framework in the response format requested.
+Response formats include `JSON`, `JSONP`, `XML`, and `YAML`.
 
-However, for most routes and controller actions, you will be returning a full `Illuminate\Http\Response` instance or a [view](/docs/{{version}}/views). Returning a full `Response` instance allows you to customize the response's HTTP status code and headers. A `Response` instance inherits from the `Symfony\Component\HttpFoundation\Response` class, providing a variety of methods for building HTTP responses:
+The gophersaurus `http.Responder` interface contains all the methods of the `http.ResponseWriter` object. Therefore, anything a golang `http.HandlerFunc` can do so can a gophersaurus `http.HandlerFunc`.
 
-    use Illuminate\Http\Response;
-
-    Route::get('home', function () {
-        return (new Response($content, $status))
-                      ->header('Content-Type', $value);
-    });
-
-For convenience, you may also use the `response` helper:
-
-    Route::get('home', function () {
-        return response($content, $status)
-                      ->header('Content-Type', $value);
-    });
-
-> **Note:** For a full list of available `Response` methods, check out its [API documentation](http://laravel.com/api/master/Illuminate/Http/Response.html) and the [Symfony API documentation](http://api.symfony.com/2.7/Symfony/Component/HttpFoundation/Response.html).
+> **Note:** For a full list of available `Response` methods, check out its [API documentation](https://godoc.org/github.com/gophersaurus/gf.v1/http#Response) and the [Golang API documentation](http://golang.org/pkg/net/http/#Response).
 
 <a name="attaching-headers-to-responses"></a>
 #### Attaching Headers To Responses
 
-Keep in mind that most response methods are chainable, allowing for the fluent building of responses. For example, you may use the `header` method to add a series of headers to the response before sending it back to the user:
+You may use the `Header` method to add a series of headers to the response before sending it back to the client:
 
-    return response($content)
-                ->header('Content-Type', $type)
-                ->header('X-Header-One', 'Header Value')
-                ->header('X-Header-Two', 'Header Value');
+```go
+func Index(resp http.Responder, req *http.Request) {
+  resp.Header("Content-Type", "text/plain")
+  resp.Header("X-Header-One", "Header Value")
+  resp.Header("X-Header-Two", "Header Value")
+  resp.Write(req, "Welcome fellow gopher.")
+}
+```
 
 
 <a name="attaching-cookies-to-responses"></a>
