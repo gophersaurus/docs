@@ -18,14 +18,18 @@ identifier = "v1"
 ## Installation
 
 ### Requirements
-Gophersaurus has a few system requirements:
+Gophersaurus has a few requirements:
 
-* installed version of Go `go1.5.1` or greater
+* installed version of Go `1.5` or greater
 * `$GOPATH` has been set
-* `$GOPATH/bin` is part of `$PATH` (optional)
+
+### Optional Settings
+These are optional steps that might be worth taking the time to setup:
+
+* `$GOPATH/bin` is part of `$PATH`
 
 <a name="install-gophersaurus"></a>
-### Installing Gophersaurus
+### Install Gophersaurus
 
 The fastest way to start a new Gophersaurus project is with the `gf` tool.
 You can download the `gf` tool on your machine with the following command:
@@ -38,38 +42,21 @@ $ go get -u github.com/gophersaurus/gf
 > your terminal. The flag `-u` downloads and installs a fresh copy of the repo.
 
 The `gf new` command will create a fresh Gophersaurus project.
-For example, the command `gf new api` will create a directory named `api` with a fresh Gophersaurus installation.
+For example, the command `gf new api` will create a directory named `api` with a new Gophersaurus installation.
 
-More options are available that just `gf new`. If you run `gf -h` you will see the following:
-
-```bash
-$ gf -h
-The Gophersaurus project tool.
-
-Usage:
-   [flags]
-   [command]
-
-Available Commands:
-  new         Update Gophersaurus.
-  update      Update the Gophersaurus framework.
-  version     Installed version of the gf tool.
-
-Flags:
-  -v, --verbose[=false]: Print verbose output
-
-Use " [command] --help" for more information about a command.
-```
+More options are available that just `gf new`.
+If you run `gf -h` you find more options.
 
 <a name="configuration"></a>
 ## Configuration
 
-Gophersaurus manages configuration settings by leveraging spf13's `viper` package.
+Gophersaurus manages configuration settings by leveraging spf13's excellent `viper` package.
 
 > You can find more about viper at https://github.com/spf13/viper.
 
-All configuration settings are stored in a file named `config` under the `app` directory.
-The file format of `config` can be `JSON`, `XML`, or `YAML`, so your configuration file might be something like: `/app/config.yml`.
+All configuration and environment specific settings are stored in a file named `env` in the root of  the `app` directory.
+The file format of `env` can be `JSON`, `YAML`, or `TOML` so your configuration file might be something like: `<projectroot>/env.yml`.
+
 Viper supports environment variables as well as `etcd` and `consul` out of the box.
 
 #### Port & Application Keys
@@ -99,14 +86,97 @@ keys:
     - 8.8.4.4
 ```
 
-Any kind of variables can be included in this configuration file as well.
-To access those variables
+<a name="configuration-etc"></a>
+### Configuration in etc
+
+Gophersaurus will look for a `env.yaml` file by default in the current directory its executing in, but you can add multiple directories to search for a `env` file.
+
+To do so simply add an `init` method that contains the following method with a path to the other directory such as `config.AddConfigPath("/etc/myproject")` to the `<projectroot>/app/app.go` file. Below is an example of what this file might look like before and after:
+
+Before:
+```Go
+package app
+
+import (
+	"github.com/gophersaurus/gf.v1/bootstrap"
+	"github.com/gophersaurus/gf.v1/router"
+)
+
+// Serve bootstraps the web service.
+func Serve() error {
+	m := router.NewMux()
+	return bootstrap.Server(m, register)
+}
+
+```
+
+After:
+```Go
+package app
+
+import (
+	"github.com/gophersaurus/gf.v1/bootstrap"
+	"github.com/gophersaurus/gf.v1/router"
+)
+
+func init() {
+  config.AddConfigPath("/etc/myproject")
+}
+
+// Serve bootstraps the web service.
+func Serve() error {
+	m := router.NewMux()
+	return bootstrap.Server(m, register)
+}
+```
 
 <a name="environment-variables"></a>
 ### Environment Variables
 
 The `config` package currently handles environment variables as well.
-Currently to enable them you must update the `config.AutomaticEnv()` method within the `/app/bootstrap/config.go` file.
+To automatically enable them add an `init` method that contains `config.AutomaticEnv()` to the `<projectroot>/app/app.go` file. Below is an example of what this file might look like before and after:
+
+Before:
+```Go
+package app
+
+import (
+	"github.com/gophersaurus/gf.v1/bootstrap"
+	"github.com/gophersaurus/gf.v1/router"
+)
+
+func init() {
+  config.AddConfigPath("/etc/myproject")
+}
+
+// Serve bootstraps the web service.
+func Serve() error {
+	m := router.NewMux()
+	return bootstrap.Server(m, register)
+}
+
+```
+
+After:
+```Go
+package app
+
+import (
+	"github.com/gophersaurus/gf.v1/bootstrap"
+	"github.com/gophersaurus/gf.v1/router"
+)
+
+func init() {
+  config.AddConfigPath("/etc/myproject")
+  config.AutomaticEnv()
+}
+
+// Serve bootstraps the web service.
+func Serve() error {
+	m := router.NewMux()
+	return bootstrap.Server(m, register)
+}
+```
 
 <a name="access-configuration-variables"></a>
 ### Access Configuration Variables
